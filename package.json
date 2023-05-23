@@ -7,11 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir=src/",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "pre-commit": "next lint --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
     "daisyui": "^2.51.6",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.3",
