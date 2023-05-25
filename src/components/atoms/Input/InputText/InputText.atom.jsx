@@ -5,7 +5,7 @@ const InputText = ({ onChange, value, name, placeholder, type, variant }) => {
 
   return variant === "text" ? (
     <input
-      className='px-8 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
+      className='ps-8 pe-16 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
       onChange={onChange}
       value={value}
       name={name}
