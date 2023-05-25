@@ -6,7 +6,7 @@ import Image from "next/image";
 const Header = ({ toggleSidebar, isOpen }) => {
 
     return (
-        <div className='navbar bg-white text-black flex justify-between items-center'>
+        <div className='navbar bg-white text-black flex justify-between items-center h-24 shadow'>
             {/* Toggle Button */}
             <div className='p-2 mr-10 md:hidden'>
                 <button
@@ -39,7 +39,7 @@ const Header = ({ toggleSidebar, isOpen }) => {
                 </button>
             </div>
             {/* Item Header */}
-            <div className='flex-1 md:flex hidden'>
+            <div className='flex-1 md:flex hidden pl-4'>
                 <input type='text' placeholder='Cari' className='input input-bordered bg-gray-100 rounded-2xl' />
             </div>
             <div className='flex-none gap-2'>
