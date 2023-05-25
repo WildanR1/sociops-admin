@@ -21,9 +21,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className='h-screen bg-white'>
             {/* Sidebar */}
             <aside
-                className={`absolute left-0 top-0 z-50 flex h-screen w-72
+                className={`absolute left-0 top-0 z-50 flex h-screen w-72 shadow-md
                 flex-col overflow-y-hidden bg-white duration-300 ease-linear 
-                lg:static lg:translate-x-0 
+                lg:static lg:translate-x-0
                 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
                 {/* Logo */}
