@@ -1,10 +1,6 @@
-"use client"
-import DefaultTemplate from "@/components/templates/DefaultTemplate.template";
+"use client";
+import DefaultTemplate from "@/components/template/DefaultTemplate.template";
 
 export default function Home() {
-  return (
-    <DefaultTemplate>
-      tes
-    </DefaultTemplate>
-  );
+  return <DefaultTemplate>tes</DefaultTemplate>;
 }

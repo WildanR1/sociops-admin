@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      dropShadow: {
+        custom: "0 4px 4px rgba(0, 0, 0, 0.25)",
+      },
       colors: {
         "primary-25": "#F5F8FF",
         "primary-50": "#EEF4FF",
@@ -52,9 +55,34 @@ module.exports = {
         "error-700": "#B42318",
         "error-800": "#912018",
         "error-900": "#7A271A",
+        "blue-gray-25": "#FCFCFD",
+        "blue-gray-50": "#F8F9FC",
+        "blue-gray-100": "#EAECF5",
+        "blue-gray-200": "#D5D9EB",
+        "blue-gray-300": "#AFB5D9",
+        "blue-gray-400": "#717BBC",
+        "blue-gray-500": "#4E5BA6",
+        "blue-gray-600": "#3E4784",
+        "blue-gray-700": "#363F72",
+        "blue-gray-800": "#293056",
+        "blue-gray-900": "#101323",
+        "Gray-25": "#FCFCFD",
+        "Gray-50": "#F9FAFB",
+        "Gray-100": "#F2F4F7",
+        "Gray-200": "#EAECF0",
+        "Gray-300": "#D0D5DD",
+        "Gray-400": "#98A2B3",
+        "Gray-500": "#667085",
+        "Gray-600": "#475467",
+        "Gray-700": "#344054",
+        "Gray-800": "#1D2939",
+        "Gray-900": "#101828",
       },
     },
   },
 
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: false,
+  },
 };
