@@ -1,0 +1,4 @@
+.tabs .tab-active {
+    border-bottom-width: 4px !important;
+    border-color: #444CE7 !important;
+}
