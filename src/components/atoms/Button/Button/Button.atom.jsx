@@ -17,19 +17,19 @@ const Button = ({ onClick, text, variant, size, type, width, fontSize }) => {
         break;
       case "success-600":
         variant =
-          "bg-success-600 hover:bg-primary-700 duration-300 ease-in-out";
+          "bg-success-600 hover:bg-success-700 duration-300 ease-in-out";
         break;
       case "success-500":
         variant =
-          "bg-success-600 hover:bg-primary-700 duration-300 ease-in-out";
+          "bg-success-600 hover:bg-success-600 duration-300 ease-in-out";
         break;
       case "warning-600":
         variant =
-          "bg-warning-600 hover:bg-primary-700 duration-300 ease-in-out";
+          "bg-warning-600 hover:bg-warning-700 duration-300 ease-in-out";
         break;
       case "warning-500":
         variant =
-          "bg-warning-500 hover:bg-primary-700 duration-300 ease-in-out";
+          "bg-warning-500 hover:bg-warning-600 duration-300 ease-in-out";
         break;
       default:
         variant = "bg-[#98A2B3]";
