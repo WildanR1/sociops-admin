@@ -37,7 +37,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 <nav className='mt-8'>
                     <ul>
                         <li>
-                            <Link legacyBehavior href='/'>
+                            <Link legacyBehavior href='/dashboard'>
                                 <a className={classNames(
                                     '', typeof window !== 'undefined' && window.location.pathname === '/dashboard'
                                     ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
