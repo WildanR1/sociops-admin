@@ -31,6 +31,14 @@ const Button = ({ onClick, text, variant, size, type, width, fontSize }) => {
         variant =
           "bg-warning-500 hover:bg-primary-700 duration-300 ease-in-out";
         break;
+      case "warning-400":
+        variant =
+          "bg-warning-400 hover:bg-warning-700 duration-300 ease-in-out";
+        break;
+      case "blue-gray-600":
+        variant =
+          "bg-blue-gray-600 hover:bg-blue-gray-800 duration-300 ease-in-out";
+        break;
       default:
         variant = "bg-[#98A2B3]";
         break;
