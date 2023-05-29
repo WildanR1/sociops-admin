@@ -1,192 +1,184 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import sociops from "../../../public/sociops.svg"
-import { FaArchive, FaChalkboardTeacher, FaCoins, FaHandHoldingHeart, FaHome } from "react-icons/fa"
-import { AiFillSetting, AiOutlineArrowLeft } from "react-icons/ai"
-import { MdHelp } from "react-icons/md"
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-}
+import sociops from "../../../public/sociops.svg";
+import {
+    FaArchive,
+    FaChalkboardTeacher,
+    FaCoins,
+    FaHandHoldingHeart,
+    FaHome,
+} from "react-icons/fa";
+import { AiFillSetting, AiOutlineArrowLeft } from "react-icons/ai";
+import { MdHelp } from "react-icons/md";
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+
+    const [currentPath, setCurrentPath] = useState("");
+
+    useEffect(() => {
+        setCurrentPath(window.location.pathname);
+    }, []);
 
     const toggleSidebar = () => {
         setSidebarOpen(!sidebarOpen);
     };
 
+    const isActive = (path) => currentPath === path;
+
     return (
-        <div className='h-screen bg-white'>
+        <div className='h-screen'>
             {/* Sidebar */}
             <aside
-                className={`absolute left-0 top-0 z-50 flex h-screen w-72 shadow-md
+                className={`absolute left-0 top-0 z-50 flex h-screen w-[280px] shadow-md
                 flex-col overflow-y-hidden bg-white duration-300 ease-linear 
                 lg:static lg:translate-x-0
-                ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
+                ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}
             >
                 {/* Logo */}
-                <div className='flex h-16 m-4'>
+                <div className='flex h-16 my-4'>
                     <Image alt='icon' src={sociops}></Image>
                     <div className='p-4 text-primary-600 md:hidden block'>
-                        <AiOutlineArrowLeft size={24} onClick={toggleSidebar}></AiOutlineArrowLeft>
+                        <AiOutlineArrowLeft
+                            size={24}
+                            onClick={toggleSidebar}
+                        ></AiOutlineArrowLeft>
                     </div>
                 </div>
                 {/* List Items */}
                 <nav className='mt-8'>
                     <ul>
                         <li>
-                            <Link legacyBehavior href='/dashboard'>
-                                <a className={classNames(
-                                    '', typeof window !== 'undefined' && window.location.pathname === '/dashboard'
-                                    ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                    : 'flex items-center py-4 pl-10',
-                                    'hover:bg-primary-600 hover:text-white'
-                                )}
+                            <Link href='/dashboard' >
+                                <span
+                                    className={`flex items-center py-4 ${isActive("/dashboard")
+                                        ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                        : "hover:bg-primary-600 hover:text-white pl-10"
+                                        }`}
                                 >
-                                    {typeof window !== 'undefined' && window.location.pathname === '/dashboard' && (
-                                        <>
-                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                        </>
+                                    {isActive("/dashboard") && (
+                                        <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                     )}
                                     <span className='mr-3'>
-                                        <FaHome size={24}></FaHome>
+                                        <FaHome size={24} />
                                     </span>
                                     <span>Dashboard</span>
-                                </a>
+                                </span>
                             </Link>
                         </li>
                         <li>
-                            <Link legacyBehavior href='/customer'>
-                                <a className={classNames(
-                                    '', typeof window !== 'undefined' && window.location.pathname === '/customer'
-                                    ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                    : 'flex items-center py-4 pl-10',
-                                    'hover:bg-primary-600 hover:text-white'
-                                )}
+                            <Link href='/customer'>
+                                <span
+                                    className={`flex items-center py-4 ${isActive("/customer")
+                                        ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                        : "hover:bg-primary-600 hover:text-white pl-10"
+                                        }`}
                                 >
-                                    {typeof window !== 'undefined' && window.location.pathname === '/customer' && (
-                                        <>
-                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                        </>
+                                    {isActive("/customer") && (
+                                        <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                     )}
                                     <span className='mr-3'>
-                                        <FaChalkboardTeacher size={24}></FaChalkboardTeacher>
+                                        <FaChalkboardTeacher size={24} />
                                     </span>
                                     <span>Customer</span>
-                                </a>
+                                </span>
                             </Link>
                         </li>
                         <li>
-                            <Link legacyBehavior href='/fundraising'>
-                                <a className={classNames(
-                                    '', typeof window !== 'undefined' && window.location.pathname === '/fundraising'
-                                    ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                    : 'flex items-center py-4 pl-10',
-                                    'hover:bg-primary-600 hover:text-white'
-                                )}
+                            <Link href='/fundraising'>
+                                <span
+                                    className={`flex items-center py-4 ${isActive("/fundraising")
+                                        ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                        : "hover:bg-primary-600 hover:text-white pl-10"
+                                        }`}
                                 >
-                                    {typeof window !== 'undefined' && window.location.pathname === '/fundraising' && (
-                                        <>
-                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                        </>
+                                    {isActive("/fundraising") && (
+                                        <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                     )}
                                     <span className='mr-3'>
-                                        <FaCoins size={24}></FaCoins>
+                                        <FaCoins size={24} />
                                     </span>
                                     <span>Fundraising</span>
-                                </a>
+                                </span>
                             </Link>
                         </li>
                         <li>
-                            <Link legacyBehavior href='/volunteer'>
-                                <a className={classNames(
-                                    '', typeof window !== 'undefined' && window.location.pathname === '/volunteer'
-                                    ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                    : 'flex items-center py-4 pl-10',
-                                    'hover:bg-primary-600 hover:text-white'
-                                )}
+                            <Link href='/volunteer'>
+                                <span
+                                    className={`flex items-center py-4 ${isActive("/volunteer")
+                                        ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                        : "hover:bg-primary-600 hover:text-white pl-10"
+                                        }`}
                                 >
-                                    {typeof window !== 'undefined' && window.location.pathname === '/volunteer' && (
-                                        <>
-                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                        </>
+                                    {isActive("/volunteer") && (
+                                        <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                     )}
                                     <span className='mr-3'>
-                                        <FaHandHoldingHeart size={24}></FaHandHoldingHeart>
+                                        <FaHandHoldingHeart size={24} />
                                     </span>
                                     <span>Volunteer</span>
-                                </a>
+                                </span>
                             </Link>
                         </li>
                         <li>
-                            <Link legacyBehavior href='/news'>
-                                <a className={classNames(
-                                    '', typeof window !== 'undefined' && window.location.pathname === '/news'
-                                    ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                    : 'flex items-center py-4 pl-10',
-                                    'hover:bg-primary-600 hover:text-white'
-                                )}
+                            <Link href='/news'>
+                                <span
+                                    className={`flex items-center py-4 ${isActive("/news")
+                                        ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                        : "hover:bg-primary-600 hover:text-white pl-10"
+                                        }`}
                                 >
-                                    {typeof window !== 'undefined' && window.location.pathname === '/news' && (
-                                        <>
-                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                        </>
+                                    {isActive("/news") && (
+                                        <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                     )}
                                     <span className='mr-3'>
-                                        <FaArchive size={24}></FaArchive>
+                                        <FaArchive size={24} />
                                     </span>
                                     <span>News</span>
-                                </a>
+                                </span>
                             </Link>
                         </li>
                     </ul>
                 </nav>
                 {/* Bottom List Items */}
-                <div className='absolute bottom-0 left-0 w-72 mb-5'>
+                <div className='absolute bottom-0 left-0 w-[280px] mb-7'>
                     <nav>
                         <ul>
                             <li>
-                                <Link legacyBehavior href='/help'>
-                                    <a className={classNames(
-                                        '', typeof window !== 'undefined' && window.location.pathname === '/help'
-                                        ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                        : 'flex items-center py-4 pl-10',
-                                        'hover:bg-primary-600 hover:text-white'
-                                    )}
+                                <Link href='/help'>
+                                    <span
+                                        className={`flex items-center py-4 ${isActive("/help")
+                                            ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                            : "hover:bg-primary-600 hover:text-white pl-10"
+                                            }`}
                                     >
-                                        {typeof window !== 'undefined' && window.location.pathname === '/help' && (
-                                            <>
-                                                <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                            </>
+                                        {isActive("/help") && (
+                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                         )}
                                         <span className='mr-3'>
-                                            <MdHelp size={24}></MdHelp>
+                                            <MdHelp size={24} />
                                         </span>
                                         <span>Help</span>
-                                    </a>
+                                    </span>
                                 </Link>
                             </li>
                             <li>
-                                <Link legacyBehavior href='/settings'>
-                                    <a className={classNames(
-                                        '', typeof window !== 'undefined' && window.location.pathname === '/settings'
-                                        ? `flex items-center py-4 bg-primary-100 text-primary-600 font-bold rounded-lg`
-                                        : 'flex items-center py-4 pl-10',
-                                        'hover:bg-primary-600 hover:text-white'
-                                    )}
+                                <Link href='/settings'>
+                                    <span
+                                        className={`flex items-center py-4 ${isActive("/settings")
+                                            ? "bg-primary-100 text-primary-600 font-bold rounded-lg"
+                                            : "hover:bg-primary-600 hover:text-white pl-10"
+                                            }`}
                                     >
-                                        {typeof window !== 'undefined' && window.location.pathname === '/settings' && (
-                                            <>
-                                                <span className='h-6 w-2 bg-primary-600 rounded-r mr-8'></span>
-                                            </>
+                                        {isActive("/settings") && (
+                                            <span className='h-6 w-2 bg-primary-600 rounded-r mr-8' />
                                         )}
                                         <span className='mr-3'>
-                                            <AiFillSetting size={24}></AiFillSetting>
+                                            <AiFillSetting size={24} />
                                         </span>
                                         <span>Settings</span>
-                                    </a>
+                                    </span>
                                 </Link>
                             </li>
                         </ul>
