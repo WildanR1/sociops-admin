@@ -7,7 +7,7 @@ import newsImage from "../../../../public/news.png";
 const page = () => {
   return (
     <DefaultTemplate>
-      <div className='text-4xl mb-[53px]'>Tulis berita</div>
+      <div className='text-4xl mb-[53px]'>Detail berita</div>
       <Image src={newsImage} alt='news'></Image>
       <div className='font-bold text-4xl mt-[32px]'>
         Seru! Salurkan Donasi Alat Kesenian untuk Anak-anak Desa <br />

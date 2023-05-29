@@ -2,7 +2,6 @@
 import DefaultTemplate from "@/components/template/DefaultTemplate.template";
 import React from "react";
 
-
 const listNews = () => {
   return (
     <DefaultTemplate>
