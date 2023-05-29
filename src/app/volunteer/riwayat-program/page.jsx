@@ -1,26 +1,26 @@
 "use client";
-import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
-import { TableV1 } from "@/components/organisms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
 import React from "react";
+import DefaultTemplate from "@/components/template/DefaultTemplate.template";
+import { TableV1 } from "@/components/organisms";
+import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
 
-const PengajuanProgram = () => {
+const RiwayatProgram = () => {
   return (
     <DefaultTemplate>
       <div className='mb-[7px] pb-4 flex items-center'>
         <div className='pr-4'>
           <ButtonBack />
         </div>
-        <div className='font-medium text-2xl'>Permintaan Pengajuan Program</div>
+        <div className='font-medium text-2xl'>Riwayat Program</div>
       </div>
       <div className='pt-4 overflow-x-scroll md:overflow-auto'>
         <TableV1
           variant='primary'
           header1='No'
-          header2='Nama Program'
+          header2='Nama program'
           header3='Deskripsi'
-          header4='Tanggal diajukan'
-          header5='Detail'
+          header4='Tanggal'
+          header5='Status'
         >
           <TableV1Row
             variant='primary'
@@ -30,8 +30,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Ditolak'
+                variant='error-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -46,8 +46,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Diterima'
+                variant='success-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -62,8 +62,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Diterima'
+                variant='success-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -78,8 +78,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Ditolak'
+                variant='error-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -94,8 +94,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Ditolak'
+                variant='error-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -110,8 +110,8 @@ const PengajuanProgram = () => {
             tanggal='6 Mei 2023'
             button={
               <Button
-                text='Lihat Detail'
-                variant='blue-gray-600'
+                text='Diterima'
+                variant='success-600'
                 width='w-full'
                 fontSize='medium'
                 size='medium'
@@ -124,4 +124,4 @@ const PengajuanProgram = () => {
   );
 };
 
-export default PengajuanProgram;
+export default RiwayatProgram;
