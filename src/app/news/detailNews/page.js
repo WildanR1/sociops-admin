@@ -3,11 +3,17 @@ import DefaultTemplate from "@/components/template/DefaultTemplate.template";
 import Image from "next/image";
 import React from "react";
 import newsImage from "../../../../public/news.png";
+import { ButtonBack } from "@/components/atoms";
 
 const page = () => {
   return (
     <DefaultTemplate>
-      <div className='text-4xl mb-[53px]'>Detail berita</div>
+      <div className='flex items-center mb-[53px]'>
+        <div className='pr-4'>
+          <ButtonBack />
+        </div>
+        <div className='text-4xl'>Detail berita</div>
+      </div>
       <Image src={newsImage} alt='news'></Image>
       <div className='font-bold text-4xl mt-[32px]'>
         Seru! Salurkan Donasi Alat Kesenian untuk Anak-anak Desa <br />
