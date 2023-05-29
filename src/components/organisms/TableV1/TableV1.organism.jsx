@@ -1,6 +1,14 @@
 import React from "react";
 
-const TableV1 = ({ variant, children }) => {
+const TableV1 = ({
+  variant,
+  header1,
+  header2,
+  header3,
+  header4,
+  header5,
+  children,
+}) => {
   let bgHeader;
   if (variant) {
     switch (variant) {
@@ -19,11 +27,11 @@ const TableV1 = ({ variant, children }) => {
     <table className='table-auto'>
       <thead>
         <tr className={`${bgHeader || "bg-blue-gray-600"} text-white text-xl`}>
-          <th className='w-1/12 p-5'>No</th>
-          <th className='w-3/12 p-5'>Nama Program</th>
-          <th className='w-4/12 p-5'>Deskripsi</th>
-          <th className='w-3/12 p-5'>Tanggal Diajukan</th>
-          <th className='w-1/12 p-5'>Lihat</th>
+          <th className='w-1/12 p-5'>{header1}</th>
+          <th className='w-3/12 p-5'>{header2}</th>
+          <th className='w-4/12 p-5'>{header3}</th>
+          <th className='w-3/12 p-5'>{header4}</th>
+          <th className='w-1/12 p-5'>{header5}</th>
         </tr>
       </thead>
       <tbody>{children}</tbody>
