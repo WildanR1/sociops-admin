@@ -10,6 +10,10 @@ const Button = ({
 }) => {
   if (variant) {
     switch (variant) {
+      case "primary-800":
+        variant =
+          "bg-primary-800 hover:bg-primary-900 duration-300 ease-in-out";
+        break;
       case "primary-600":
         variant =
           "bg-primary-600 hover:bg-primary-700 duration-300 ease-in-out";
