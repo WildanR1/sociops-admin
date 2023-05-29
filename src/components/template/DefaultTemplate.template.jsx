@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Sidebar from "../organisms/Sidebar.organism";
-import Header from "../organisms/Header.organism";
+import { Header, Sidebar } from "../organisms";
 
 const DefaultTemplate = (props) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
