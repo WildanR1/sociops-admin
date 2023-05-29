@@ -11,3 +11,4 @@ export { default as SidebarNavItem } from "./Sidebar/SidebarNavItem.atom";
 export { default as SidebarLogo } from "./Sidebar/SidebarLogo.atom";
 export { default as HeaderGreetingText } from "./Header/HeaderGreetingText.atom";
 export { default as HeaderSearchInput } from "./Header/HeaderSearchInput.atom";
+export { default as TableV2Row } from "./TableV2/TableV2Row.atom";

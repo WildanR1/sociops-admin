@@ -30,7 +30,7 @@ const Button = ({
         break;
       case "success-500":
         variant =
-          "bg-success-600 hover:bg-success-600 duration-300 ease-in-out";
+          "bg-success-500 hover:bg-success-600 duration-300 ease-in-out";
         break;
       case "warning-600":
         variant =
@@ -91,7 +91,7 @@ const Button = ({
   }
   return (
     <button
-      className={`${variant} ${size} ${width} ${fontSize} ${className} capitalize rounded-[72px] text-white text-xl`}
+      className={`${variant} ${size} ${width} ${fontSize} ${className} capitalize rounded-[72px] text-white`}
       onClick={onClick}
       type={type}
     >
