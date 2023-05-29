@@ -29,7 +29,7 @@ const SignIn = () => {
             text='Login'
             variant='primary-800'
             width='full'
-            className='p-6'
+            className='py-6 px-8'
           />
         </div>
       </div>
