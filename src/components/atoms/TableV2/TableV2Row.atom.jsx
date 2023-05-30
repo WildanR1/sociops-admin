@@ -1,21 +1,34 @@
 import Image from "next/image";
 import React from "react";
-import newsImage from "../../../../public/news.png";
 import { Button } from "..";
 
-const TableV2Row = ({ no, nama, deskripsi, tanggal }) => {
+const TableV2Row = ({
+  no,
+  nama,
+  comunity,
+  comunitydesc,
+  deskripsi,
+  tanggal,
+  rounded,
+  imgsrc,
+  btnvariant,
+}) => {
   return (
     <div className='flex rounded-xl p-5 text-center drop-shadow-custom bg-Gray-25 mb-2.5'>
       <div className='w-[67px] p-[18.5px] flex items-center'>{no}</div>
       <div className='w-[421px] flex'>
         <Image
-          className='rounded-[20px]'
+          className={rounded}
           width={124}
           height={106}
-          src={newsImage}
+          src={imgsrc}
           alt='news'
         ></Image>
-        <p className='text-justify font-medium text-base p-[23px]'>{nama}</p>
+        <div className='justify-center p-[23px]'>
+          <p className='text-justify font-medium text-base'>{nama}</p>
+          <p className='text-justify font-medium text-3xl'>{comunity}</p>
+          <p className='text-justify font-light text-lg'>{comunitydesc}</p>
+        </div>
       </div>
       <div className='w-[400px] text-justify font-normal text-base flex items-center'>
         <div className='line-clamp-3'>{deskripsi}</div>
@@ -23,7 +36,7 @@ const TableV2Row = ({ no, nama, deskripsi, tanggal }) => {
       <div className='p-[18.5px] flex justify-center items-center ml-7'>
         <Button
           className='w-[130px] h-[40px] text-base'
-          variant='success-500'
+          variant={btnvariant}
           text={tanggal}
         />
       </div>
