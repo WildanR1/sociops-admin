@@ -20,7 +20,7 @@ const page = () => {
               </div>
             }
             title='Tulis berita'
-            link='/news/createNews'
+            link='/news/create-news'
           />
           <ButtonBigIconWidth
             icon={
@@ -30,7 +30,7 @@ const page = () => {
               />
             }
             title='List berita'
-            link='/news/listNews'
+            link='/news/list-news'
           />
         </div>
       </div>
