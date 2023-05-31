@@ -34,14 +34,14 @@ const Customer = () => {
               />
             }
             title='Daftar Akun Pengguna'
-            link='/fundraising/list-program'
+            link='/customer/daftar-akun-pengguna'
           />
           <ButtonBigIcon
             icon={
               <FaUsers size={100} className='text-primary-600 mx-auto mb-3' />
             }
             title='Pengguna Fundraising'
-            link='/fundraising/riwayat-program'
+            link='/customer/pengguna-fundraising'
           />
           <ButtonBigIcon
             icon={
@@ -51,7 +51,7 @@ const Customer = () => {
               />
             }
             title='Pengguna Volunteer'
-            link='/fundraising/transaksi'
+            link='/customer/pengguna-volunteer'
           />
         </div>
         <FakeStatistic title='Customer statistics' />
