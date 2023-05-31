@@ -1,8 +1,6 @@
-"use client";
 import { ButtonBack, TableV2Row } from "@/components/atoms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
+import { DefaultTemplate } from "@/components/template";
 import SepatuNike from "../../../../public/SepatuNike.png";
-import React from "react";
 
 const PermintaanKomunitas = () => {
   return (

@@ -1,6 +1,4 @@
-"use client";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
 import "./Dashboard.style.css";
 import {
   FaArchive,

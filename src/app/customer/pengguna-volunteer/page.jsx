@@ -1,4 +1,3 @@
-"use client";
 import {
   Button,
   ButtonBack,
@@ -7,9 +6,8 @@ import {
   TableV3Row,
 } from "@/components/atoms";
 import { TableV3 } from "@/components/organisms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
+import { DefaultTemplate } from "@/components/template";
 import Image from "next/image";
-import React from "react";
 
 const PenggunaVolunteer = () => {
   return (

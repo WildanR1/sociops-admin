@@ -1,8 +1,6 @@
-"use client";
 import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
 import { TableV1 } from "@/components/organisms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
 
 const PengajuanProgram = () => {
   return (

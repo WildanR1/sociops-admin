@@ -1,5 +1,3 @@
-import React from "react";
-
 const TableV3Header = ({ className, title }) => {
   return (
     <th

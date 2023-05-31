@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import { SidebarBottomNavigation, SidebarNavigation } from "../../molecules";
 import { SidebarLogo, SidebarToggle } from "../../atoms";

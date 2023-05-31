@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState } from "react";
-import { Header, Sidebar } from "../organisms";
+import { Header, Sidebar } from "@/components/organisms";
 
 const DefaultTemplate = (props) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -1,5 +1,3 @@
-import React from "react";
-
 const HeaderSearchInput = () => {
   return (
     <div className='md:flex hidden pl-8'>

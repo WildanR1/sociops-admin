@@ -1,6 +1,4 @@
-"use client";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
 import newsImage from "../../../../public/news.png";
 import Image from "next/image";
 import { Button, ButtonBack } from "@/components/atoms";
