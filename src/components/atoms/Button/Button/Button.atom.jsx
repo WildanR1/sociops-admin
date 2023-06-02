@@ -1,13 +1,4 @@
-const Button = ({
-  onClick,
-  text,
-  variant,
-  size,
-  type,
-  width,
-  fontSize,
-  className,
-}) => {
+const Button = ({ onClick, text, variant, size, type, width, fontSize }) => {
   if (variant) {
     switch (variant) {
       case "primary-800":
@@ -80,6 +71,9 @@ const Button = ({
       default:
         width = "w-52";
         break;
+      case "medium":
+        width = "w-432";
+        break;
     }
   }
 
@@ -95,7 +89,7 @@ const Button = ({
   }
   return (
     <button
-      className={`${variant} ${size} ${width} ${fontSize} ${className} capitalize rounded-[72px] text-white`}
+      className={`${variant} ${size} ${width} ${fontSize} capitalize rounded-[72px] text-white`}
       onClick={onClick}
       type={type}
     >

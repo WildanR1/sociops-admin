@@ -5,7 +5,7 @@ const InputText = ({ onChange, value, name, placeholder, type, variant }) => {
 
   return variant === "text" ? (
     <input
-      className='w-full ps-8 pe-16 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
+      className='w-[432px] h-[72px] ps-8 pe-16 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
       onChange={onChange}
       value={value}
       name={name}
@@ -45,7 +45,7 @@ const InputText = ({ onChange, value, name, placeholder, type, variant }) => {
         )}
       </button>
       <input
-        className='w-full ps-8 pe-16 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
+        className='w-[432px] h-[72px] ps-8 pe-16 py-6 placeholder:capitalize rounded-[72px] text-base border-2 border-primary-300 bg-primary-700 placeholder:text-white text-white'
         onChange={onChange}
         value={value}
         name={name}
