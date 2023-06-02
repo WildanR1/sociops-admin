@@ -1,5 +1,3 @@
-import React from "react";
-
 const NewProgram = ({ title, children }) => {
   return (
     <div className='px-5'>

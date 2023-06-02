@@ -1,5 +1,7 @@
+"use client";
+
 import { useRouter } from "next/navigation";
-import React from "react";
+
 import { HiArrowLeft } from "react-icons/hi";
 
 const ButtonBack = () => {

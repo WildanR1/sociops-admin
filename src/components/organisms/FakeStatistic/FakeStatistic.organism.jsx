@@ -1,4 +1,3 @@
-import React from "react";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 
 const FakeStatistic = ({ title }) => {

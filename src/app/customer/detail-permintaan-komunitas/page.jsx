@@ -1,6 +1,4 @@
-"use client";
-import React from "react";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
+import { DefaultTemplate } from "@/components/template";
 import { Button, ButtonBack } from "@/components/atoms";
 import Image from "next/image";
 import { HiDownload } from "react-icons/hi";

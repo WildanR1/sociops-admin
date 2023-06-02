@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 
 const InputText = ({ onChange, value, name, placeholder, type, variant }) => {

@@ -1,7 +1,5 @@
-"use client";
 import { ButtonBigIconWidth } from "@/components/atoms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
 import { FaNewspaper, FaPlus } from "react-icons/fa";
 
 const page = () => {

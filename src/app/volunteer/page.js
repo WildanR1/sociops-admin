@@ -1,9 +1,8 @@
-"use client";
 import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
 import { FakeStatistic } from "@/components/organisms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
+
 import { FaClipboardList, FaUserCheck, FaUserPlus } from "react-icons/fa";
 
 const Volunteer = () => {

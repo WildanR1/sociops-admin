@@ -1,5 +1,3 @@
-import React from "react";
-
 const TableV1Row = ({ variant, button, no, nama, deskripsi, tanggal }) => {
   let bgContent;
   if (variant) {

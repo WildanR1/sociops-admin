@@ -1,9 +1,7 @@
-"use client";
 import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
 import { FakeStatistic } from "@/components/organisms";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
-import React from "react";
+import { DefaultTemplate } from "@/components/template";
 import {
   FaClipboardList,
   FaUserFriends,
@@ -34,14 +32,14 @@ const Customer = () => {
               />
             }
             title='Daftar Akun Pengguna'
-            link='/fundraising/list-program'
+            link='/customer/daftar-akun-pengguna'
           />
           <ButtonBigIcon
             icon={
               <FaUsers size={100} className='text-primary-600 mx-auto mb-3' />
             }
             title='Pengguna Fundraising'
-            link='/fundraising/riwayat-program'
+            link='/customer/pengguna-fundraising'
           />
           <ButtonBigIcon
             icon={
@@ -51,7 +49,7 @@ const Customer = () => {
               />
             }
             title='Pengguna Volunteer'
-            link='/fundraising/transaksi'
+            link='/customer/pengguna-volunteer'
           />
         </div>
         <FakeStatistic title='Customer statistics' />

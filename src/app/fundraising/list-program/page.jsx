@@ -1,6 +1,4 @@
-"use client";
-import React from "react";
-import DefaultTemplate from "@/components/template/DefaultTemplate.template";
+import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
 import { ButtonBack, TableV1Row } from "@/components/atoms";
 
