@@ -1,5 +1,4 @@
 "use client";
-
 const Button = ({
   onClick,
   text,
@@ -82,6 +81,9 @@ const Button = ({
       default:
         width = "w-52";
         break;
+      case "medium":
+        width = "w-432";
+        break;
     }
   }
 
@@ -97,7 +99,7 @@ const Button = ({
   }
   return (
     <button
-      className={`${variant} ${size} ${width} ${fontSize} ${className} capitalize rounded-[72px] text-white`}
+      className={`${variant} ${size} ${width} ${fontSize} capitalize rounded-[72px] text-white`}
       onClick={onClick}
       type={type}
     >
