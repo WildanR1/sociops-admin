@@ -1,14 +1,5 @@
 "use client";
-const Button = ({
-  onClick,
-  text,
-  variant,
-  size,
-  type,
-  width,
-  fontSize,
-  className,
-}) => {
+const Button = ({ onClick, text, variant, size, type, width, fontSize }) => {
   if (variant) {
     switch (variant) {
       case "primary-800":
