@@ -1,4 +1,5 @@
 const { useSelector } = require("react-redux");
 
-export const useUserIsLoginSelector = () =>
-  useSelector((state) => state.user.type);
+export const useUserToken = () => useSelector((state) => state.user.token);
+
+export const useUser = () => useSelector((state) => state.user.user);

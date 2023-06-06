@@ -2,8 +2,11 @@
 
 import React, { useState } from "react";
 import { Header, Sidebar } from "@/components/organisms";
+import useWithAuth from "@/hooks/useWithAuth";
 
-const DefaultTemplate = (props) => {
+const DefaultTemplate = ({ children }) => {
+  useWithAuth();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -30,7 +33,7 @@ const DefaultTemplate = (props) => {
           {/* <!-- ===== Main Content Start ===== --> */}
           <main>
             <div className='mx-auto max-w-screen-2xl p-4 md:p-6 mt-[104px] 2xl:p-10'>
-              {props.children}
+              {children}
             </div>
           </main>
           {/* <!-- ===== Main Content End ===== --> */}

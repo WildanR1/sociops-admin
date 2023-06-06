@@ -1,8 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import avatar from "../../../../public/avatar.svg";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { logout } from "@/config/redux/user/userSlice";
+import { useRouter } from "next/navigation";
 
 const HeaderNotificationDropdown = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/");
+  };
   return (
     <>
       <div className='form-control hover:bg-slate-400 hover:rounded-lg'>
@@ -48,7 +59,7 @@ const HeaderNotificationDropdown = () => {
             </li>
           </Link>
           <li>
-            <a>Logout</a>
+            <button onClick={() => handleLogout()}>Logout</button>
           </li>
         </ul>
       </div>

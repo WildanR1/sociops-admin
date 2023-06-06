@@ -2,6 +2,10 @@ import { ButtonBigIconWidth } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import { FaNewspaper, FaPlus } from "react-icons/fa";
 
+export const metadata = {
+  title: "News",
+};
+
 const page = () => {
   return (
     <DefaultTemplate>

@@ -3,6 +3,10 @@ import newsImage from "../../../../public/news.png";
 import Image from "next/image";
 import { Button, ButtonBack } from "@/components/atoms";
 
+export const metadata = {
+  title: "News - Create News",
+};
+
 const createNews = () => {
   return (
     <DefaultTemplate>
