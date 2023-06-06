@@ -9,6 +9,10 @@ import {
 import { FakeStatistic } from "@/components/organisms";
 import { ButtonBigIcon } from "@/components/atoms";
 
+export const metadata = {
+  title: "Dashboard",
+};
+
 const Dashboard = () => {
   return (
     <DefaultTemplate>

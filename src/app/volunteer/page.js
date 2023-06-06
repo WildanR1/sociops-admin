@@ -2,8 +2,11 @@ import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
 import { FakeStatistic } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
-
 import { FaClipboardList, FaUserCheck, FaUserPlus } from "react-icons/fa";
+
+export const metadata = {
+  title: "Volunter",
+};
 
 const Volunteer = () => {
   return (

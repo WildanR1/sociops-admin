@@ -8,6 +8,10 @@ import { TableV3 } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Customer - Daftar Akun Pengguna",
+};
+
 const DaftarAkunPengguna = () => {
   return (
     <DefaultTemplate>

@@ -3,6 +3,10 @@ import { Button, ButtonBack } from "@/components/atoms";
 import Image from "next/image";
 import { HiDownload } from "react-icons/hi";
 
+export const metadata = {
+  title: "Volunter - Detail Program",
+};
+
 const DetailProgram = () => {
   return (
     <DefaultTemplate>

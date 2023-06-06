@@ -2,6 +2,10 @@ import { ButtonBack, TableV2Row } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import newsImage from "../../../../public/news.png";
 
+export const metadata = {
+  title: "News - List News",
+};
+
 const listNews = () => {
   return (
     <DefaultTemplate>

@@ -9,6 +9,10 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 
+export const metadata = {
+  title: "Fundraising",
+};
+
 const Fundraising = () => {
   return (
     <DefaultTemplate>

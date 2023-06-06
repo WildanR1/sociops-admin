@@ -2,6 +2,10 @@ import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
 import { ButtonBack, TableV1Row } from "@/components/atoms";
 
+export const metadata = {
+  title: "Fundraising - List Program",
+};
+
 const ListProgram = () => {
   return (
     <DefaultTemplate>

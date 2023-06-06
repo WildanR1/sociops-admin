@@ -5,10 +5,18 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { login } from "@/config/redux/user/userSlice";
+import { getUserInfo } from "@/config/redux/user/userThunk";
+import { useEffect } from "react";
+import { useUserToken } from "@/config/redux/user/userSelector";
 
 const useFormSignInModel = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const token = useUserToken();
+
+  useEffect(() => {
+    token.length !== 0 ? router.push("/dashboard") : null;
+  }, [router, token.length]);
 
   const schemaSignIn = Yup.object({
     email: Yup.string()
@@ -23,18 +31,20 @@ const useFormSignInModel = () => {
 
   const handleLogin = async (adminData) => {
     try {
-      const req = await axios.post(
+      const reqSignIn = await axios.post(
         `${process.env.API_URL}/auth/signin`,
         adminData,
       );
-      const res = await req.data;
-      const accessToken = res.data.access_token;
+      const resSingIn = await reqSignIn.data;
+      const accessToken = resSingIn.data.access_token;
+
       dispatch(login(accessToken));
+      dispatch(getUserInfo({ accessToken }));
 
       router.push("/dashboard");
-      toast("Berhasil masuk", { type: "success" });
+      toast("Selamat datang admin", { type: "success" });
     } catch (error) {
-      toast("Username atau password salah", { type: "error" });
+      toast("email atau password salah", { type: "error" });
     }
   };
 

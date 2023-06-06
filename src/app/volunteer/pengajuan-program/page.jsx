@@ -2,6 +2,10 @@ import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
 import { TableV1 } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
 
+export const metadata = {
+  title: "Volunter - Pengajuan Program",
+};
+
 const PengajuanProgram = () => {
   return (
     <DefaultTemplate>
