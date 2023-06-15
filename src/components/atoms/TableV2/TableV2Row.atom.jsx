@@ -33,12 +33,8 @@ const TableV2Row = ({
       <div className='w-[400px] text-justify font-normal text-base flex items-center'>
         <div className='line-clamp-3'>{deskripsi}</div>
       </div>
-      <div className='p-[18.5px] flex justify-center items-center ml-7'>
-        <Button
-          className='w-[130px] h-[40px] text-base'
-          variant={btnvariant}
-          text={tanggal}
-        />
+      <div className='p-[18.5px] flex flex-1 justify-center items-center'>
+        <Button variant={btnvariant} text={tanggal} size='detail-button' />
       </div>
     </div>
   );
