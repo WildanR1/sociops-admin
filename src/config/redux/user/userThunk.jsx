@@ -5,7 +5,7 @@ export const getUserInfo = createAsyncThunk(
   "user/getUserInfo",
   async (param) => {
     try {
-      const res = await axios.get(`${process.env.API_URL}/userinfo`, {
+      const res = await axios.get(`${process.env.API_URL}/auth/userinfo`, {
         headers: {
           Authorization: `Bearer ${param.accessToken}`,
         },
