@@ -1,4 +1,5 @@
 "use client";
+
 import { ButtonBack, TableV2Row } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import newsImage from "../../../../public/news.png";
@@ -7,13 +8,11 @@ import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 import { useUserToken } from "@/config/redux/user/userSelector";
 import moment from "moment";
-
-export const metadata = {
-  title: "News - List News",
-};
+import { useRouter } from "next/navigation";
 
 const ListNews = () => {
   const token = useUserToken();
+  const router = useRouter();
   const [listNews, setListNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const fetchData = useCallback(async () => {
@@ -30,7 +29,7 @@ const ListNews = () => {
       const res = response.data;
       setListNews(res.data);
     } catch (error) {
-      console.error(error);
+      throw error;
     }
   }, [token, currentPage]);
   useEffect(() => {
@@ -40,6 +39,10 @@ const ListNews = () => {
     setCurrentPage(selected);
   };
   const pageCount = 10;
+
+  const handleDetail = (id) => {
+    router.push(`/news/${id}`);
+  };
   return (
     <DefaultTemplate>
       <div className='flex items-center mb-[40px]'>
@@ -59,16 +62,22 @@ const ListNews = () => {
             </div>
             {listNews?.map((news, index) => {
               return (
-                <TableV2Row
-                  no={(currentPage + 1) * 5 - 5 + (index + 1)}
-                  imgsrc={newsImage}
-                  rounded='rounded-[20px]'
-                  nama={news.title}
-                  deskripsi={news.description}
-                  tanggal={moment(news.created_at).format("D MMM YYYY")}
-                  btnvariant='success-500'
+                <button
                   key={news.id}
-                />
+                  onClick={() => handleDetail(news.id)}
+                  className='w-full'
+                >
+                  <TableV2Row
+                    // key={news.id}
+                    no={(currentPage + 1) * 5 - 5 + (index + 1)}
+                    imgsrc={newsImage}
+                    rounded='rounded-[20px]'
+                    nama={news.title}
+                    deskripsi={news.description}
+                    tanggal={moment(news.created_at).format("D MMM YYYY")}
+                    btnvariant='success-500'
+                  />
+                </button>
               );
             })}
             <div className='flex justify-center mt-4'>
