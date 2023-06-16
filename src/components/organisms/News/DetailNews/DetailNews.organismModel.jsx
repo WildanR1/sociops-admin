@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDetailNews } from "@/config/redux/news/newSelector";
+import { useDetailNews } from "@/config/redux/news/newsSelector";
 import { useDispatch } from "react-redux";
 import { retrieveDetailNews } from "@/config/redux/news/newsThunk";
 import { useUserToken } from "@/config/redux/user/userSelector";
