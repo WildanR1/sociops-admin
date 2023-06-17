@@ -1,6 +1,6 @@
 import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
-import { FakeStatistic } from "@/components/organisms";
+import { Statistic } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
 import {
   FaClipboardList,
@@ -56,7 +56,9 @@ const Customer = () => {
             link='/customer/pengguna-volunteer'
           />
         </div>
-        <FakeStatistic title='Customer statistics' />
+        <div className='overflow-x-scroll lg:overflow-x-visible'>
+          <Statistic variant='customer' />
+        </div>
         <div className='grid grid-cols-3'>
           <NewProgram title='Permintan Komunitas Baru'>
             <ProgramItem
