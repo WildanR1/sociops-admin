@@ -4,7 +4,7 @@ import storage from "redux-persist/lib/storage/session";
 import { Reducers } from "../reducers/reducer";
 import thunkMiddleware from "redux-thunk";
 
-const persistConfig = { key: "root", storage };
+const persistConfig = { key: "root", storage, whitelist: ["user", "news"] };
 
 const persistatedReducers = persistReducer(persistConfig, Reducers);
 
