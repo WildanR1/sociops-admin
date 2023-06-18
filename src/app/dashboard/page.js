@@ -1,13 +1,12 @@
 import { DefaultTemplate } from "@/components/template";
-import "./Dashboard.style.css";
 import {
   FaArchive,
   FaChalkboardTeacher,
   FaCoins,
   FaHandHoldingHeart,
 } from "react-icons/fa";
-import { FakeStatistic } from "@/components/organisms";
 import { ButtonBigIcon } from "@/components/atoms";
+import { Statistic } from "@/components/organisms";
 
 export const metadata = {
   title: "Dashboard",
@@ -56,9 +55,15 @@ const Dashboard = () => {
             title='News'
           />
         </div>
-        <FakeStatistic title='Customer statistics' />
-        <FakeStatistic title='Fundraising statistics' />
-        <FakeStatistic title='Volunteer statistics' />
+        <div className='overflow-x-scroll lg:overflow-x-visible'>
+          <Statistic variant='customer' />
+        </div>
+        <div className='overflow-x-scroll lg:overflow-x-visible'>
+          <Statistic variant='volunteer' />
+        </div>
+        <div className='overflow-x-scroll lg:overflow-x-visible'>
+          <Statistic variant='fundraising' />
+        </div>
       </div>
     </DefaultTemplate>
   );

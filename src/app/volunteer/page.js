@@ -1,6 +1,6 @@
 import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
-import { FakeStatistic } from "@/components/organisms";
+import { Statistic } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
 import { FaClipboardList, FaUserCheck, FaUserPlus } from "react-icons/fa";
 
@@ -44,7 +44,9 @@ const Volunteer = () => {
             link='/volunteer/riwayat-program'
           />
         </div>
-        <FakeStatistic title='Volunteer statistics' />
+        <div className='overflow-x-scroll lg:overflow-x-visible'>
+          <Statistic variant='volunteer' />
+        </div>
         <div className='grid grid-cols-2'>
           <NewProgram title='Permintan Program Baru'>
             <ProgramItem
