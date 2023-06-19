@@ -9,12 +9,15 @@ import { useUserToken } from "@/config/redux/user/userSelector";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import axios from "axios";
 import { storage } from "@/config/firebase/config";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 export const metadata = {
   title: "News - Create News",
 };
 
 const CreateNews = () => {
+  const router = useRouter();
   const token = useUserToken();
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -35,12 +38,35 @@ const CreateNews = () => {
   };
 
   const validationSchema = Yup.object({
-    title: Yup.string().required("Judul berita harus diisi"),
-    description: Yup.string().required("Deskripsi berita harus diisi"),
+    title: Yup.string()
+      .required("Judul berita harus diisi")
+      .min(10, "Minimal 10 Karakter"),
+    description: Yup.string()
+      .required("Deskripsi berita harus diisi")
+      .min(20, "Minimal 20 Karakter"),
     img: Yup.mixed().required("Gambar harus dipilih"),
   });
 
-  const handleFormSubmit = async (values, { resetForm }) => {
+  const postData = async (newsData) => {
+    try {
+      const response = await axios.post(
+        `${process.env.API_URL}/news`,
+        newsData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+      const res = await response.data;
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      toast("data belum tersimpan", { type: "error" });
+    }
+  };
+
+  const handleFormSubmit = async (values) => {
     try {
       const storageRef = ref(storage, `images/${values.img.name}`);
       await uploadBytes(storageRef, values.img);
@@ -50,29 +76,16 @@ const CreateNews = () => {
       const newsData = {
         title: values.title,
         description: values.description,
-        photo_url: imgUrl,
+        photo_url: `${imgUrl}`,
       };
 
-      console.log("News data:", newsData);
-      console.log("Gambar url :", imgUrl);
-
-      const response = await axios.post(
-        `${process.env.API_URL}/news`,
-        newsData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Mengirim token sebagai header Authorization
-          },
-        },
-      );
-
-      const res = response.data;
-      console.log("Data berhasil terkirim:", res);
+      postData(newsData);
 
       setSelectedImage(null);
-      resetForm();
+      toast("data berhasil tersimpan", { type: "success" });
+      router.push("/news");
     } catch (error) {
-      console.error("Error:", error);
+      toast("data belum tersimpan", { type: "error" });
     }
   };
 
