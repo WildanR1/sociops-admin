@@ -11,6 +11,7 @@ import axios from "axios";
 import { storage } from "@/config/firebase/config";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export const metadata = {
   title: "News - Create News",
@@ -23,7 +24,9 @@ const CreateNews = () => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
+    if (file) {
+      setSelectedImage(URL.createObjectURL(file));
+    }
   };
 
   const handlePreviewClick = () => {
@@ -107,23 +110,29 @@ const CreateNews = () => {
             {({ field, form }) => (
               <div>
                 {selectedImage ? (
-                  <img
-                    src={selectedImage}
-                    alt='Preview'
+                  <div
+                    style={{ position: "relative", overflow: "hidden" }}
                     className='w-full h-[360px] object-cover object-center rounded-lg cursor-pointer'
-                    onClick={handlePreviewClick}
-                  />
+                  >
+                    <Image
+                      src={selectedImage}
+                      alt='Preview'
+                      fill
+                      objectFit='cover'
+                      onClick={handlePreviewClick}
+                    />
+                  </div>
                 ) : (
                   <div
                     className='flex items-center justify-center h-[360px] border border-gray-300 bg-gray-100 rounded-lg cursor-pointer'
                     onClick={handlePreviewClick}
                   >
-                    <label htmlFor='img' className='flex flex-col items-center'>
+                    <div className='flex flex-col items-center'>
                       <AiOutlinePlus size={40} />
                       <span className='text-center text-gray-500 font-bold'>
                         Tambah Gambar
                       </span>
-                    </label>
+                    </div>
                   </div>
                 )}
                 <input
