@@ -1,12 +1,69 @@
+"use client";
 import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
 import { TableV1 } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
+import { useUserToken } from "@/config/redux/user/userSelector";
+import axios from "axios";
+import moment from "moment";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 
 export const metadata = {
   title: "Fundraising - Pengajuan Program",
 };
 
 const PengajuanProgram = () => {
+  const token = useUserToken();
+  const router = useRouter();
+  const [listFundraising, setListFundraising] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await axios.get(`${process.env.API_URL}/campaigns`, {
+        params: {
+          page: currentPage + 1,
+          page_size: 5,
+          type: "FUNDRAISING",
+          status: "PENDING",
+          sort: "created_at_asc",
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = response.data;
+      setListFundraising(res.data);
+    } catch (error) {
+      throw error;
+    }
+  }, [token, currentPage]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  const handlePaginate = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+  const pageCount = 10;
+
+  const renderTableKosong = () => {
+    const rows = [];
+    for (let i = 0; i < 5; i++) {
+      rows.push(
+        <TableV1Row
+          key={i}
+          variant='warning'
+          deskripsi='Data tidak tersedia'
+        />,
+      );
+    }
+    return rows;
+  };
+
+  const handleDetail = (id) => {
+    router.push(`/fundraising/${id}`);
+  };
+
   return (
     <DefaultTemplate>
       <div className='mb-[7px] pb-4 flex items-center'>
@@ -24,103 +81,52 @@ const PengajuanProgram = () => {
           header4='Tanggal diajukan'
           header5='Detail'
         >
-          <TableV1Row
-            variant='warning'
-            no='1'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
+          {listFundraising.length > 0 ? (
+            listFundraising.map((fundraising, index) => (
+              <TableV1Row
+                key={fundraising.id}
+                variant='warning'
+                no={(currentPage + 1) * 5 - 5 + (index + 1)}
+                nama={fundraising.title}
+                deskripsi={fundraising.description}
+                tanggal={moment(fundraising.created_at).format("D MMM YYYY")}
+                button={
+                  <Button
+                    text='Lihat Detail'
+                    variant='warning-400'
+                    width='w-full'
+                    fontSize='medium'
+                    size='medium'
+                    onClick={() => handleDetail(fundraising.id)}
+                  />
+                }
               />
-            }
-          />
-          <TableV1Row
-            variant='warning'
-            no='2'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
-              />
-            }
-          />
-          <TableV1Row
-            variant='warning'
-            no='3'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
-              />
-            }
-          />
-          <TableV1Row
-            variant='warning'
-            no='4'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
-              />
-            }
-          />
-          <TableV1Row
-            variant='warning'
-            no='5'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
-              />
-            }
-          />
-          <TableV1Row
-            variant='warning'
-            no='6'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023'
-            button={
-              <Button
-                text='Lihat Detail'
-                variant='warning-400'
-                width='w-full'
-                fontSize='medium'
-                size='medium'
-              />
-            }
-          />
+            ))
+          ) : (
+            <>{renderTableKosong()}</>
+          )}
         </TableV1>
+        <div className='flex justify-center mt-4'>
+          <ReactPaginate
+            pageCount={pageCount} // Jumlah total halaman
+            pageRangeDisplayed={3} // Jumlah halaman yang ditampilkan
+            marginPagesDisplayed={2} // Jumlah halaman di sekitar halaman aktif yang ditampilkan
+            onPageChange={handlePaginate} // Fungsi yang dipanggil saat halaman berubah
+            containerClassName='join'
+            activeClassName='btn-active'
+            nextLabel='>>'
+            previousLabel='<<'
+            pageClassName='join-item btn btn-square btn-outline'
+            pageLinkClassName='w-full h-full flex justify-center items-center'
+            previousClassName='join-item btn btn-square btn-outline'
+            previousLinkClassName='w-full h-full flex justify-center items-center'
+            nextClassName='join-item btn btn-square btn-outline'
+            nextLinkClassName='w-full h-full flex justify-center items-center'
+            breakLabel='...'
+            breakClassName='join-item btn btn-square btn-outline'
+            breakLinkClassName='w-full h-full flex justify-center items-center'
+          />
+        </div>
       </div>
     </DefaultTemplate>
   );
