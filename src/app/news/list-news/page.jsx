@@ -91,14 +91,14 @@ const ListNews = () => {
                 nextLabel='>>'
                 previousLabel='<<'
                 pageClassName='join-item btn btn-square btn-outline'
-                // pageLinkClassName="join-item btn"
+                pageLinkClassName='w-full h-full flex justify-center items-center'
                 previousClassName='join-item btn btn-square btn-outline'
-                // previousLinkClassName="join-item btn"
+                previousLinkClassName='w-full h-full flex justify-center items-center'
                 nextClassName='join-item btn btn-square btn-outline'
-                // nextLinkClassName="join-item btn btn-outline"
+                nextLinkClassName='w-full h-full flex justify-center items-center'
                 breakLabel='...'
                 breakClassName='join-item btn btn-square btn-outline'
-                // breakLinkClassName="join-item btn btn-outline"
+                breakLinkClassName='w-full h-full flex justify-center items-center'
               />
             </div>
           </div>
