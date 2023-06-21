@@ -22,7 +22,7 @@ const Fundraising = () => {
             icon={
               <FaUserPlus
                 size={100}
-                className='text-Orange-400 mx-auto mb-3 group-hover:text-Gray-50'
+                className='text-warning-400 mx-auto mb-3 group-hover:text-Gray-50'
               />
             }
             title='Permintaan Pengajuan Program'
@@ -32,7 +32,7 @@ const Fundraising = () => {
             icon={
               <FaClipboardList
                 size={100}
-                className='text-Orange-400 mx-auto mb-3 group-hover:text-primary-600'
+                className='text-warning-400 mx-auto mb-3 group-hover:text-primary-600'
               />
             }
             title='List Program'
@@ -42,7 +42,7 @@ const Fundraising = () => {
             icon={
               <FaUserCheck
                 size={100}
-                className='text-Orange-400 mx-auto mb-3'
+                className='text-warning-400 mx-auto mb-3'
               />
             }
             title='Riwayat Program'
@@ -52,7 +52,7 @@ const Fundraising = () => {
             icon={
               <FaMoneyCheckAlt
                 size={100}
-                className='text-Orange-400 mx-auto mb-3'
+                className='text-warning-400 mx-auto mb-3'
               />
             }
             title='Transaksi'
