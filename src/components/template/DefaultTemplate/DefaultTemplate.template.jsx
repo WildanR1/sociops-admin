@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { Header, Sidebar } from "@/components/organisms";
 import useWithAuth from "@/hooks/useWithAuth";
+import moment from "moment";
+import "moment/locale/id.js";
 
 const DefaultTemplate = ({ children }) => {
   useWithAuth();
@@ -12,7 +14,7 @@ const DefaultTemplate = ({ children }) => {
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
-
+  moment.locale("id");
   return (
     <div>
       {/* <!-- ===== Page Wrapper Start ===== --> */}

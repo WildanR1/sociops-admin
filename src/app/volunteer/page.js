@@ -8,7 +8,6 @@ import { useUserToken } from "@/config/redux/user/userSelector";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import moment from "moment";
-import "moment/dist/locale/id";
 
 export const metadata = {
   title: "Volunter",
@@ -51,7 +50,6 @@ const Volunteer = () => {
     fetchData("Pengajuan Program");
     fetchData("Program Terbaru");
   }, [fetchData]);
-  moment.locale("id");
   return (
     <DefaultTemplate>
       <div className='grid grid-cols-1 gap-[30px]'>
