@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Link from "next/link";
 import avatar from "../../../../public/avatar.svg";
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { logout } from "@/config/redux/user/userSlice";
 import { useRouter } from "next/navigation";
+import { useUser } from "@/config/redux/user/userSelector";
 
 const HeaderNotificationDropdown = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const HeaderNotificationDropdown = () => {
     dispatch(logout());
     router.push("/");
   };
+  const user = useUser();
   return (
     <>
       <div className='form-control hover:bg-slate-400 hover:rounded-lg'>
@@ -38,7 +40,13 @@ const HeaderNotificationDropdown = () => {
       <div className='dropdown dropdown-end ml-8 mr-4'>
         <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
           <div className='w-10 rounded-full'>
-            <Image alt='avatar' src={avatar}></Image>
+            <img
+              alt='avatar'
+              src={user.PhotoURL ? user?.PhotoURL : avatar}
+              className='object-cover object-center'
+              width='40px'
+              height='40px'
+            />
           </div>
         </label>
         <ul
