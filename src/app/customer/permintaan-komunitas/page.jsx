@@ -2,10 +2,6 @@ import { ButtonBack, TableV2Row } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import SepatuNike from "../../../../public/SepatuNike.png";
 
-export const metadata = {
-  title: "Customer - Permintaan Komunitas",
-};
-
 const PermintaanKomunitas = () => {
   return (
     <DefaultTemplate>

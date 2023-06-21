@@ -14,10 +14,6 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 
-export const metadata = {
-  title: "Fundraising",
-};
-
 const Fundraising = () => {
   const token = useUserToken();
   const [dataPengajuanProgram, setDataPengajuanProgram] = useState([]);

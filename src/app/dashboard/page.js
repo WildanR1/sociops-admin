@@ -8,10 +8,6 @@ import {
 import { ButtonBigIcon } from "@/components/atoms";
 import { Statistic } from "@/components/organisms";
 
-export const metadata = {
-  title: "Dashboard",
-};
-
 const Dashboard = () => {
   return (
     <DefaultTemplate>

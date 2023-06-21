@@ -8,10 +8,6 @@ import axios from "axios";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
 
-export const metadata = {
-  title: "Volunter - List Program",
-};
-
 const ListProgram = () => {
   const token = useUserToken();
   const [listVolunteer, setListVolunteer] = useState([]);

@@ -9,10 +9,6 @@ import { TableV3 } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
 import Image from "next/image";
 
-export const metadata = {
-  title: "Customer - Pengguna Fundraising",
-};
-
 const PenggunaFundraising = () => {
   return (
     <DefaultTemplate>

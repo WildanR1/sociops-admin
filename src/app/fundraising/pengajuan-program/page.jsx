@@ -9,10 +9,6 @@ import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 
-export const metadata = {
-  title: "Fundraising - Pengajuan Program",
-};
-
 const PengajuanProgram = () => {
   const token = useUserToken();
   const router = useRouter();

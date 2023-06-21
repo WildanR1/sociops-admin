@@ -13,10 +13,6 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export const metadata = {
-  title: "News - Create News",
-};
-
 const CreateNews = () => {
   const router = useRouter();
   const token = useUserToken();

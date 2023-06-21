@@ -9,10 +9,6 @@ import {
   FaUsers,
 } from "react-icons/fa";
 
-export const metadata = {
-  title: "Customer",
-};
-
 const Customer = () => {
   return (
     <DefaultTemplate>

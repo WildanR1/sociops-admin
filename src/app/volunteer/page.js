@@ -9,10 +9,6 @@ import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import moment from "moment";
 
-export const metadata = {
-  title: "Volunter",
-};
-
 const Volunteer = () => {
   const token = useUserToken();
   const [dataPengajuanProgram, setDataPengajuanProgram] = useState([]);
