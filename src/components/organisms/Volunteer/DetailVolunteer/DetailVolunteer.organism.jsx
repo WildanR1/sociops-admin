@@ -1,13 +1,20 @@
+"use client";
+
 import { DefaultTemplate } from "@/components/template";
 import { Button, ButtonBack } from "@/components/atoms";
 import Image from "next/image";
 import { HiDownload } from "react-icons/hi";
+import moment from "moment";
+import useDetailVolunteerModel from "./DetailVolunteer.organismModel";
 
-export const metadata = {
-  title: "Volunter - Detail Program",
-};
+const DetailVolunteer = ({ id }) => {
+  const useModel = useDetailVolunteerModel({ id });
 
-const DetailProgram = () => {
+  const timeStart = moment(useModel.volunteer.start_date);
+  const timeFinish = moment(useModel.volunteer.end_date);
+  const formatTimeStart = timeStart.format("D MMM YYYY");
+  const formatTimeFinish = timeFinish.format("D MMM YYYY");
+
   return (
     <DefaultTemplate>
       <div className='grid grid-cols-1 gap-8'>
@@ -51,7 +58,9 @@ const DetailProgram = () => {
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
                 Periode program
               </div>
-              <div className='text-xl'>6 Mei 2023 - 13 Mei 2023</div>
+              <div className='text-xl'>
+                {formatTimeStart} - {formatTimeFinish}
+              </div>
             </div>
             <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl'>
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
@@ -131,4 +140,4 @@ const DetailProgram = () => {
   );
 };
 
-export default DetailProgram;
+export default DetailVolunteer;
