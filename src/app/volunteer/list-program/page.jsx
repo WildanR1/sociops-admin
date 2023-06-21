@@ -1,12 +1,65 @@
+"use client";
 import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
 import { ButtonBack, TableV1Row } from "@/components/atoms";
+import { useUserToken } from "@/config/redux/user/userSelector";
+import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import moment from "moment";
+import ReactPaginate from "react-paginate";
 
 export const metadata = {
   title: "Volunter - List Program",
 };
 
 const ListProgram = () => {
+  const token = useUserToken();
+  const [listVolunteer, setListVolunteer] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await axios.get(`${process.env.API_URL}/campaigns`, {
+        params: {
+          page: currentPage + 1,
+          page_size: 5,
+          type: "VOLUNTEER",
+          status: "ACCEPTED",
+          sort: "created_at_desc",
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const res = response.data;
+      setListVolunteer(res.data);
+    } catch (error) {
+      throw error;
+    }
+  }, [token, currentPage]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const handlePaginate = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
+  const pageCount = 10;
+
+  const renderTableKosong = () => {
+    const rows = [];
+    for (let i = 0; i < 5; i++) {
+      rows.push(
+        <TableV1Row
+          key={i}
+          variant='primary'
+          deskripsi='Data tidak tersedia'
+        />,
+      );
+    }
+    return rows;
+  };
+
   return (
     <DefaultTemplate>
       <div className='mb-[7px] pb-4 flex items-center'>
@@ -24,55 +77,47 @@ const ListProgram = () => {
           header4='Tanggal'
           header5='Lokasi'
         >
-          <TableV1Row
-            variant='primary'
-            no='1'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
-          <TableV1Row
-            variant='primary'
-            no='2'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
-          <TableV1Row
-            variant='primary'
-            no='3'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
-          <TableV1Row
-            variant='primary'
-            no='4'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
-          <TableV1Row
-            variant='primary'
-            no='5'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
-          <TableV1Row
-            variant='primary'
-            no='6'
-            nama='#JustDoIt, Lakukan Olahraga dengan Nyaman Bersama Kami'
-            deskripsi='Proin et euismod diam. Duis fermentum felis nisi, ut lobortis lectus mollis non. Integer pellentesque erat eu diam pharetra auctor id et nulla. Nam sodales arcu nec blandit fringilla. Ut vitae ligula vel lectus ultrices tempus ut id sem. Etiam egestas lacus scelerisque augue congue, sed rutrum sem lobortis. Pellentesque vel enim ante. Quisque hendrerit lobortis neque, ac tempor dui elementum vel. Duis '
-            tanggal='6 Mei 2023 - 13 Mei 2023'
-            button='Jakarta'
-          />
+          {listVolunteer.length > 0 ? (
+            listVolunteer.map((volunteer, index) => (
+              <TableV1Row
+                key={volunteer.id}
+                variant='primary'
+                no={(currentPage + 1) * 5 - 5 + (index + 1)}
+                nama={volunteer.title}
+                deskripsi={volunteer.description}
+                tanggal={
+                  moment(volunteer.start_date).format("D MMM YYYY") +
+                  " - " +
+                  moment(volunteer.end_date).format("D MMM YYYY")
+                }
+                button={volunteer.location}
+              />
+            ))
+          ) : (
+            <>{renderTableKosong()}</>
+          )}
         </TableV1>
+        <div className='flex justify-center mt-4'>
+          <ReactPaginate
+            pageCount={pageCount} // Jumlah total halaman
+            pageRangeDisplayed={3} // Jumlah halaman yang ditampilkan
+            marginPagesDisplayed={2} // Jumlah halaman di sekitar halaman aktif yang ditampilkan
+            onPageChange={handlePaginate} // Fungsi yang dipanggil saat halaman berubah
+            containerClassName='join'
+            activeClassName='btn-active'
+            nextLabel='>>'
+            previousLabel='<<'
+            pageClassName='join-item btn btn-square btn-outline'
+            pageLinkClassName='w-full h-full flex justify-center items-center'
+            previousClassName='join-item btn btn-square btn-outline'
+            previousLinkClassName='w-full h-full flex justify-center items-center'
+            nextClassName='join-item btn btn-square btn-outline'
+            nextLinkClassName='w-full h-full flex justify-center items-center'
+            breakLabel='...'
+            breakClassName='join-item btn btn-square btn-outline'
+            breakLinkClassName='w-full h-full flex justify-center items-center'
+          />
+        </div>
       </div>
     </DefaultTemplate>
   );
