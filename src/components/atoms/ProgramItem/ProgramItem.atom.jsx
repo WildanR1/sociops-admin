@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-const ProgramItem = ({ title, deskripsi, linkImage, variant }) => {
+const ProgramItem = ({ title, deskripsi, nomor, variant }) => {
   if (variant) {
     switch (variant) {
       case "netral":
@@ -19,17 +17,11 @@ const ProgramItem = ({ title, deskripsi, linkImage, variant }) => {
   }
   return (
     <div className='flex items-center'>
-      <div>
-        <Image
-          alt='image program'
-          src={linkImage}
-          width={40}
-          height={40}
-          className='rounded-[15px] mr-[10px] bg-top bg-cover'
-        />
-      </div>
+      <div className='text-sm text-Gray-800 px-[10px] pt-0 pb-[10px] h-full'>{`${nomor}.`}</div>
       <div className='flex flex-col'>
-        <div className='text-sm font-medium text-Gray-800'>{title}</div>
+        <div className='line-clamp-1'>
+          <div className='text-sm text-Gray-800'>{title}</div>
+        </div>
         <div className='flex'>
           <div className={`text-xs ${variant || "text-Gray-500"}`}>
             {deskripsi}
