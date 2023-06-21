@@ -36,7 +36,7 @@ const volunteerSlice = createSlice({
       .addCase(retrieveDetailVolunteer.fulfilled, (state, action) => {
         return {
           ...state,
-          VolunteerDetail: action.payload,
+          volunteerDetail: action.payload,
           type: action.type,
         };
       })

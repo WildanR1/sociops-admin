@@ -1,9 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { DefaultTemplate } from "@/components/template";
 import { ButtonBack } from "@/components/atoms";
-import Image from "next/image";
-import News from "../../../../../public/news.png";
 import useDetailNewsModel from "./DetailNews.organismModel";
 import moment from "moment";
 
@@ -21,11 +20,24 @@ const DetailNews = ({ id }) => {
         </div>
         <div className='text-4xl'>Lihat berita</div>
       </div>
-      <div className=' rounded-lg cursor-pointer'>
-        <Image
-          className='object-center object-cover w-[1096] h-[360px]'
-          src={useModel.src ? useModel.news.photo_url : News}
-          alt='news'
+      <div
+        style={{ position: "relative", overflow: "hidden" }}
+        className='w-full h-[360px] object-cover object-center rounded-lg'
+      >
+        <img
+          src={
+            useModel.src && useModel.isLink(useModel.news.photo_url)
+              ? useModel.news.photo_url
+              : "/news.png"
+          }
+          alt='image detail news'
+          className='block mx-auto'
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            width: "100%",
+            height: "100%",
+          }}
           onError={() => useModel.setSrc(false)}
         />
       </div>

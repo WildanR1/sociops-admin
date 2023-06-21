@@ -9,13 +9,20 @@ const useDetailVolunteerModel = ({ id }) => {
   const token = useUserToken();
   const dispatch = useDispatch();
 
+  const isLink = (str) => {
+    return (
+      typeof str === "string" &&
+      (str.startsWith("http://") || str.startsWith("https://"))
+    );
+  };
+
   useEffect(() => {
     dispatch(retrieveDetailVolunteer({ id, token }));
   }, [dispatch, id, token]);
 
   const [src, setSrc] = useState(true);
 
-  return { src, setSrc, volunteer };
+  return { src, setSrc, volunteer, isLink };
 };
 
 export default useDetailVolunteerModel;
