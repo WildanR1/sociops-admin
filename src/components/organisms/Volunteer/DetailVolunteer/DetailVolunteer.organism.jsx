@@ -25,8 +25,8 @@ const DetailVolunteer = ({ id }) => {
           >
             <img
               src={
-                useModel.src && useModel.isLink(useModel.volunteer.image)
-                  ? useModel.volunteer.image
+                useModel?.src && useModel?.isLink(useModel?.volunteer?.image)
+                  ? useModel?.volunteer?.image
                   : "/exampleDetailProgram.png"
               }
               alt='image detail program'
@@ -42,7 +42,9 @@ const DetailVolunteer = ({ id }) => {
           </div>
         </div>
         {/* Judul */}
-        <div className='font-semibold text-4xl'>{useModel.volunteer.title}</div>
+        <div className='font-semibold text-4xl'>
+          {useModel?.volunteer?.title}
+        </div>
         {/* Keterangan */}
         <div>
           <div className='mb-6 grid grid-cols-2 gap-6 text-center'>
@@ -50,13 +52,15 @@ const DetailVolunteer = ({ id }) => {
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
                 Organizer
               </div>
-              <div className='text-xl'>{useModel.volunteer.organizer.Name}</div>
+              <div className='text-xl'>
+                {useModel?.volunteer?.organizer?.Name}
+              </div>
             </div>
             <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl'>
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
                 Lokasi program
               </div>
-              <div className='text-xl'>{useModel.volunteer.location}</div>
+              <div className='text-xl'>{useModel?.volunteer?.location}</div>
             </div>
           </div>
           <div className='grid grid-cols-3 gap-6 text-center'>
@@ -65,22 +69,24 @@ const DetailVolunteer = ({ id }) => {
                 Periode program
               </div>
               <div className='text-xl'>
-                {moment(useModel.volunteer.start_date).format("D MMM YYYY") +
+                {moment(useModel?.volunteer?.start_date).format("D MMM YYYY") +
                   " - " +
-                  moment(useModel.volunteer.end_date).format("D MMM YYYY")}
+                  moment(useModel?.volunteer?.end_date).format("D MMM YYYY")}
               </div>
             </div>
             <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl'>
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
                 Hashtag
               </div>
-              <div className='text-xl'>{useModel.volunteer.hashtag}</div>
+              <div className='text-xl'>{useModel?.volunteer?.hashtag}</div>
             </div>
             <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl'>
               <div className='mb-4 text-primary-700 font-semibold text-lg'>
                 Kategori
               </div>
-              <div className='text-xl'>{useModel.volunteer.category.name}</div>
+              <div className='text-xl'>
+                {useModel?.volunteer?.category?.name}
+              </div>
             </div>
           </div>
         </div>
@@ -88,7 +94,7 @@ const DetailVolunteer = ({ id }) => {
         <div>
           <div className='font-semibold text-3xl mb-4'>Tentang Campaign</div>
           <div className='text-justify text-xl'>
-            {useModel.volunteer.description}{" "}
+            {useModel?.volunteer?.description}{" "}
           </div>
         </div>
         <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl flex items-center flex-col w-[424px]'>
