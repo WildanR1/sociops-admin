@@ -9,13 +9,20 @@ const useDetailNewsModel = ({ id }) => {
   const token = useUserToken();
   const dispatch = useDispatch();
 
+  const isLink = (str) => {
+    return (
+      typeof str === "string" &&
+      (str.startsWith("http://") || str.startsWith("https://"))
+    );
+  };
+
   useEffect(() => {
     dispatch(retrieveDetailNews({ id, token }));
   }, [dispatch, id, token]);
 
   const [src, setSrc] = useState(true);
 
-  return { src, setSrc, news };
+  return { src, setSrc, news, isLink };
 };
 
 export default useDetailNewsModel;
