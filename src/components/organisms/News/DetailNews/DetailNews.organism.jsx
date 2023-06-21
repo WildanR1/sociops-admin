@@ -11,7 +11,7 @@ const DetailNews = ({ id }) => {
   const useModel = useDetailNewsModel({ id });
 
   const time = moment(useModel.news.created_at);
-  const formatTime = time.format("DD MM YYYY");
+  const formatTime = time.format("DD MMMM YYYY");
 
   return (
     <DefaultTemplate>
@@ -19,15 +19,16 @@ const DetailNews = ({ id }) => {
         <div className='pr-4'>
           <ButtonBack />
         </div>
-        <div className='text-4xl'>Detail berita</div>
+        <div className='text-4xl'>Lihat berita</div>
       </div>
-      <Image
-        src={useModel.src ? useModel.news.photo_url : News}
-        alt='news'
-        width={500}
-        height={500}
-        onError={() => useModel.setSrc(false)}
-      />
+      <div className=' rounded-lg cursor-pointer'>
+        <Image
+          className='object-center object-cover w-[1096] h-[360px]'
+          src={useModel.src ? useModel.news.photo_url : News}
+          alt='news'
+          onError={() => useModel.setSrc(false)}
+        />
+      </div>
       <div className='font-bold text-4xl mt-[32px]'>{useModel.news.title}</div>
       <div className='text-lg mt-[32px] mb-[16px]'>
         By : {useModel.news.author}
