@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { retrieveDetailVolunteer } from "./volunteerThunk";
+import {
+  retrieveDetailVolunteer,
+  retrieveRiwayatProgramVolunteer,
+} from "./volunteerThunk";
 
 const initialState = {
   volunteerDetail: {},
+  riwayatProgramVolunteer: [],
+
+  type: "",
 };
 
 const volunteerSlice = createSlice({
@@ -45,8 +51,30 @@ const volunteerSlice = createSlice({
           ...state,
           type: action.type,
         };
+      })
+      //#endregion retrieve detail Volunteer
+
+      //#region retrieve riwayat program volunteer
+      .addCase(retrieveRiwayatProgramVolunteer.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrieveRiwayatProgramVolunteer.fulfilled, (state, action) => {
+        return {
+          ...state,
+          riwayatProgramVolunteer: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrieveRiwayatProgramVolunteer.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
       });
-    //#endregion retrieve detail Volunteer
+    //#endregion retrieve riwayat program Volunteer
   },
 });
 

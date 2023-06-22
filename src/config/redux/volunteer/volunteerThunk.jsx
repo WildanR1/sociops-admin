@@ -22,3 +22,29 @@ export const retrieveDetailVolunteer = createAsyncThunk(
     }
   },
 );
+
+export const retrieveRiwayatProgramVolunteer = createAsyncThunk(
+  "volunteer/retrieveRiwayatProgramVolunteer",
+  async (param) => {
+    try {
+      const response = await axios.get(`${process.env.API_URL}/campaigns`, {
+        params: {
+          page: param.currentPage + 1,
+          page_size: 5,
+          type: "VOLUNTEER",
+          status: "status=ACCEPTED,REJECTED",
+          sort: "created_at_desc",
+        },
+        headers: {
+          Authorization: `Bearer ${param.token}`,
+        },
+      });
+      const res = response.data;
+      const data = res.data;
+
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
