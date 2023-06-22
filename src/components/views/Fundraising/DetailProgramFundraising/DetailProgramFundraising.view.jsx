@@ -3,11 +3,7 @@ import { Button, ButtonBack } from "@/components/atoms";
 import Image from "next/image";
 import { HiDownload } from "react-icons/hi";
 
-export const metadata = {
-  title: "Fundraising - Detail Program",
-};
-
-const DetailProgram = () => {
+const DetailProgramFundraising = () => {
   return (
     <DefaultTemplate>
       <div className='grid grid-cols-1 gap-8'>
@@ -226,4 +222,4 @@ const DetailProgram = () => {
   );
 };
 
-export default DetailProgram;
+export default DetailProgramFundraising;

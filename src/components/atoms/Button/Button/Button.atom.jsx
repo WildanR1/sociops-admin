@@ -58,6 +58,9 @@ const Button = ({ onClick, text, variant, size, type, width, fontSize }) => {
       case "medium":
         size = "py-3 px-7";
         break;
+      case "detail-button":
+        size = "py-[10px] px-[22.5px]";
+        break;
       default:
         size = "p-4";
         break;
