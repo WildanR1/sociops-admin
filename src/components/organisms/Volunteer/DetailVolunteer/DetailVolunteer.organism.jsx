@@ -117,12 +117,14 @@ const DetailVolunteer = ({ id }) => {
             variant='primary-600'
             text='Ditolak'
             size='large'
+            onClick={() => useModel.handleUpdateRejected()}
           />
           <Button
             width='full'
             variant='primary-600'
             text='Diterima'
             size='large'
+            onClick={() => useModel.handleUpdateAccepted()}
           />
         </div>
       </div>

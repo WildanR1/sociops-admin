@@ -32,7 +32,7 @@ export const retrieveRiwayatProgramVolunteer = createAsyncThunk(
           page: param.currentPage + 1,
           page_size: 5,
           type: "VOLUNTEER",
-          status: "status=ACCEPTED,REJECTED",
+          status: "ACCEPTED,REJECTED",
           sort: "created_at_desc",
         },
         headers: {

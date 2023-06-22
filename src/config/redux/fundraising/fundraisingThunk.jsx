@@ -10,7 +10,7 @@ export const retrieveRiwayatProgramFundraising = createAsyncThunk(
           page: param.currentPage + 1,
           page_size: 5,
           type: "FUNDRAISING",
-          status: "status=ACCEPTED,REJECTED",
+          status: "ACCEPTED,REJECTED",
           sort: "created_at_desc",
         },
         headers: {
