@@ -68,11 +68,7 @@ const PenggunaVolunteer = () => {
             </TableV3Cell>
             <TableV3Cell>
               <div className='flex justify-center'>
-                <Button
-                  variant='success-600'
-                  text='Aktif'
-                  className='p-3 w-[107px]'
-                />
+                <Button variant='success-600' text='Aktif' size={"medium"} />
               </div>
             </TableV3Cell>
           </TableV3Row>
@@ -111,11 +107,7 @@ const PenggunaVolunteer = () => {
             </TableV3Cell>
             <TableV3Cell>
               <div className='flex justify-center'>
-                <Button
-                  variant='success-600'
-                  text='Aktif'
-                  className='p-3 w-[107px]'
-                />
+                <Button variant='success-600' text='Aktif' size={"medium"} />
               </div>
             </TableV3Cell>
           </TableV3Row>
@@ -154,11 +146,7 @@ const PenggunaVolunteer = () => {
             </TableV3Cell>
             <TableV3Cell>
               <div className='flex justify-center'>
-                <Button
-                  variant='success-600'
-                  text='Aktif'
-                  className='p-3 w-[107px]'
-                />
+                <Button variant='success-600' text='Aktif' size={"medium"} />
               </div>
             </TableV3Cell>
           </TableV3Row>
@@ -197,11 +185,7 @@ const PenggunaVolunteer = () => {
             </TableV3Cell>
             <TableV3Cell>
               <div className='flex justify-center'>
-                <Button
-                  variant='success-600'
-                  text='Aktif'
-                  className='p-3 w-[107px]'
-                />
+                <Button variant='success-600' text='Aktif' size={"medium"} />
               </div>
             </TableV3Cell>
           </TableV3Row>
@@ -240,11 +224,7 @@ const PenggunaVolunteer = () => {
             </TableV3Cell>
             <TableV3Cell>
               <div className='flex justify-center'>
-                <Button
-                  variant='success-600'
-                  text='Aktif'
-                  className='p-3 w-[107px]'
-                />
+                <Button variant='success-600' text='Aktif' size={"medium"} />
               </div>
             </TableV3Cell>
           </TableV3Row>

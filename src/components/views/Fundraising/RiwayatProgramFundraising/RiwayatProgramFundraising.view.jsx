@@ -70,13 +70,17 @@ const RiwayatProgram = () => {
                     tanggal={moment(riwayat.created_at).format("D MMM YYYY")}
                     button={
                       <Button
-                        text={riwayat.status}
+                        text={
+                          riwayat?.status === "REJECTED"
+                            ? "ditolak"
+                            : "disetujui"
+                        }
                         variant={
                           riwayat.status === "REJECTED"
                             ? "error-600"
                             : "success-600"
                         }
-                        width='w-full'
+                        width='full'
                         fontSize='medium'
                         size='medium'
                       />
