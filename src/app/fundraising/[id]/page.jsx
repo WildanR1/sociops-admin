@@ -1,9 +1,8 @@
-import React from "react";
-import { DetailProgramFundraising } from "@/components/views";
+import DetailFundraising from "@/components/organisms/Fundraising/DetailFundraising/DetailFundraising.organism";
 
 export const metadata = {
-  title: "Detail Program Fundraising - Sociops",
+  title: "Detail Fundraising - Sociops",
 };
-export default function Page() {
-  return <DetailProgramFundraising />;
+export default function Page({ params: { id } }) {
+  return <DetailFundraising id={id} />;
 }
