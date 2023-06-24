@@ -67,7 +67,7 @@ const Transaksi = () => {
                 no={(currentPage + 1) * 5 - 5 + (index + 1)}
                 program={item?.campaign?.title}
                 customer={item?.user?.Name}
-                id={item?.logs?.id}
+                id={item?.id}
                 tanggal={moment(item?.created_at).format("DD MMMM YYYY")}
                 button={
                   <>
