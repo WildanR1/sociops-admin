@@ -1,12 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserInfo, retrieveDaftarAkunPengguna } from "./userThunk";
+import {
+  getUserInfo,
+  retrieveDaftarAkunPengguna,
+  retrieveRecentFundraisingUser,
+  retrieveRecentUser,
+  retrieveRecentVolunteerUser,
+} from "./userThunk";
 
 const initialState = {
   user: {},
   token: "",
   daftarAkunPengguna: [],
-
+  recentUser: [],
+  recentFundraisingUser: [],
+  recentVolunteerUser: [],
   typeDaftarAkunPengguna: "",
+  typeRecentUser: "",
+  typeRecentFundraisingUser: "",
+  typeRecentVolunteerUser: "",
   type: "",
 };
 
@@ -71,8 +82,71 @@ const userSlice = createSlice({
           ...state,
           typeDaftarAkunPengguna: action.type,
         };
+      })
+      //#endregion retrieve daftar akun pengguna
+      //#region retrieve pengguna baru
+      .addCase(retrieveRecentUser.pending, (state, action) => {
+        return {
+          ...state,
+          typeRecentUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentUser.fulfilled, (state, action) => {
+        return {
+          ...state,
+          recentUser: action.payload,
+          typeRecentUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentUser.rejected, (state, action) => {
+        return {
+          ...state,
+          typeRecentUser: action.type,
+        };
+      })
+      //#endregion retrieve pengguna baru
+      //#region retrieve pengguna fundraising
+      .addCase(retrieveRecentFundraisingUser.pending, (state, action) => {
+        return {
+          ...state,
+          typeRecentFundraisingUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentFundraisingUser.fulfilled, (state, action) => {
+        return {
+          ...state,
+          recentFundraisingUser: action.payload,
+          typeRecentFundraisingUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentFundraisingUser.rejected, (state, action) => {
+        return {
+          ...state,
+          typeRecentFundraisingUser: action.type,
+        };
+      })
+      //#endregion retrieve pengguna fundraising
+      //#region retrieve pengguna volunteer
+      .addCase(retrieveRecentVolunteerUser.pending, (state, action) => {
+        return {
+          ...state,
+          typeRecentVolunteerUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentVolunteerUser.fulfilled, (state, action) => {
+        return {
+          ...state,
+          recentVolunteerUser: action.payload,
+          typeRecentVolunteerUser: action.type,
+        };
+      })
+      .addCase(retrieveRecentVolunteerUser.rejected, (state, action) => {
+        return {
+          ...state,
+          typeRecentVolunteerUser: action.type,
+        };
       });
-    //#endregion retrieve daftar akun pengguna
+    //#endregion retrieve pengguna volunteer
   },
 });
 
