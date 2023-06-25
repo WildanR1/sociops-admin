@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserInfo } from "./userThunk";
+import { getUserInfo, retrieveDaftarAkunPengguna } from "./userThunk";
 
 const initialState = {
   user: {},
   token: "",
+  daftarAkunPengguna: [],
 
+  typeDaftarAkunPengguna: "",
   type: "",
 };
 
@@ -47,8 +49,30 @@ const userSlice = createSlice({
           ...state,
           type: action.type,
         };
+      })
+      //#endregion retrieve user info
+
+      //#region retrieve daftar akun pengguna
+      .addCase(retrieveDaftarAkunPengguna.pending, (state, action) => {
+        return {
+          ...state,
+          typeDaftarAkunPengguna: action.type,
+        };
+      })
+      .addCase(retrieveDaftarAkunPengguna.fulfilled, (state, action) => {
+        return {
+          ...state,
+          daftarAkunPengguna: action.payload,
+          typeDaftarAkunPengguna: action.type,
+        };
+      })
+      .addCase(retrieveDaftarAkunPengguna.rejected, (state, action) => {
+        return {
+          ...state,
+          typeDaftarAkunPengguna: action.type,
+        };
       });
-    //#endregion retrieve user info
+    //#endregion retrieve daftar akun pengguna
   },
 });
 
