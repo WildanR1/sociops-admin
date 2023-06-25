@@ -1,64 +1,13 @@
 "use client";
-import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
+import { Button, ButtonBack, Loading, TableV1Row } from "@/components/atoms";
 import { TableV1 } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
-import { useUserToken } from "@/config/redux/user/userSelector";
-import axios from "axios";
 import moment from "moment";
-import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
+import usePengajuanProgramFundraisingModel from "./PengajuanProgramFundraising.viewModel";
 
 const PengajuanProgramFundraising = () => {
-  const token = useUserToken();
-  const router = useRouter();
-  const [listFundraising, setListFundraising] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await axios.get(`${process.env.API_URL}/campaigns`, {
-        params: {
-          page: currentPage + 1,
-          page_size: 5,
-          type: "FUNDRAISING",
-          status: "PENDING",
-          sort: "created_at_asc",
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const res = response.data;
-      setListFundraising(res.data);
-    } catch (error) {
-      throw error;
-    }
-  }, [token, currentPage]);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-  const handlePaginate = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-  const pageCount = 10;
-
-  const renderTableKosong = () => {
-    const rows = [];
-    for (let i = 0; i < 5; i++) {
-      rows.push(
-        <TableV1Row
-          key={i}
-          variant='warning'
-          deskripsi='Data tidak tersedia'
-        />,
-      );
-    }
-    return rows;
-  };
-
-  const handleDetail = (id) => {
-    router.push(`/fundraising/${id}`);
-  };
+  const useModel = usePengajuanProgramFundraisingModel();
 
   return (
     <DefaultTemplate>
@@ -77,37 +26,43 @@ const PengajuanProgramFundraising = () => {
           header4='Tanggal diajukan'
           header5='Detail'
         >
-          {listFundraising.length > 0 ? (
-            listFundraising.map((fundraising, index) => (
-              <TableV1Row
-                key={fundraising.id}
-                variant='warning'
-                no={(currentPage + 1) * 5 - 5 + (index + 1)}
-                nama={fundraising.title}
-                deskripsi={fundraising.description}
-                tanggal={moment(fundraising.created_at).format("D MMM YYYY")}
-                button={
-                  <Button
-                    text='Lihat Detail'
-                    variant='warning-400'
-                    fontSize='medium'
-                    size='medium'
-                    width={"w-full"}
-                    onClick={() => handleDetail(fundraising.id)}
-                  />
-                }
-              />
-            ))
-          ) : (
-            <>{renderTableKosong()}</>
-          )}
+          <>
+            {useModel.loading ? (
+              <Loading />
+            ) : useModel.pengajuan.length !== 0 ? (
+              useModel.pengajuan.map((fundraising, index) => (
+                <TableV1Row
+                  key={fundraising.id}
+                  variant='warning'
+                  no={(useModel.currentPage + 1) * 5 - 5 + (index + 1)}
+                  nama={fundraising.title}
+                  deskripsi={fundraising.description}
+                  tanggal={moment(fundraising.created_at).format("D MMM YYYY")}
+                  button={
+                    <Button
+                      text='Lihat Detail'
+                      variant='warning-400'
+                      fontSize='medium'
+                      size='medium'
+                      width={"w-full"}
+                      onClick={() => useModel.handleDetail(fundraising.id)}
+                    />
+                  }
+                />
+              ))
+            ) : (
+              <td colSpan={5} className='capitalize text-center py-10 text-lg'>
+                data tidak ada
+              </td>
+            )}
+          </>
         </TableV1>
         <div className='flex justify-center mt-4'>
           <ReactPaginate
-            pageCount={pageCount} // Jumlah total halaman
+            pageCount={useModel.pageCount} // Jumlah total halaman
             pageRangeDisplayed={3} // Jumlah halaman yang ditampilkan
             marginPagesDisplayed={2} // Jumlah halaman di sekitar halaman aktif yang ditampilkan
-            onPageChange={handlePaginate} // Fungsi yang dipanggil saat halaman berubah
+            onPageChange={useModel.handlePaginate} // Fungsi yang dipanggil saat halaman berubah
             containerClassName='join'
             activeClassName='btn-active'
             nextLabel='>>'
