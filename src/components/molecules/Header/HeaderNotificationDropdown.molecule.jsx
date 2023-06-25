@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "@/config/redux/user/userSlice";
 import { useRouter } from "next/navigation";
 import { useUser } from "@/config/redux/user/userSelector";
+import Image from "next/image";
 
 const HeaderNotificationDropdown = () => {
   const dispatch = useDispatch();
@@ -40,12 +41,16 @@ const HeaderNotificationDropdown = () => {
       <div className='dropdown dropdown-end ml-8 mr-4'>
         <label tabIndex={0} className='btn btn-ghost btn-circle avatar'>
           <div className='w-10 rounded-full'>
-            <img
+            <Image
               alt='avatar'
               src={user.PhotoURL ? user?.PhotoURL : avatar}
               className='object-cover object-center'
-              width='40px'
-              height='40px'
+              width={40}
+              height={40}
+              placeholder='blur'
+              blurDataURL={
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
+              }
             />
           </div>
         </label>

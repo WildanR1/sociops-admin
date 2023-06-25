@@ -32,7 +32,7 @@ const Transaksi = () => {
           <>
             {useModel.loading ? (
               <Loading />
-            ) : useModel.transaksi.length !== 0 ? (
+            ) : useModel.transaksi?.length !== 0 ? (
               useModel.transaksi?.map((item, index) => {
                 return (
                   <TableV4Row
