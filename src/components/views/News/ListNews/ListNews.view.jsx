@@ -1,56 +1,15 @@
 "use client";
 
-import { ButtonBack, TableV2Row } from "@/components/atoms";
+import { ButtonBack, EmptyData, TableV2Row } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import ReactPaginate from "react-paginate";
-import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
-import { useUserToken } from "@/config/redux/user/userSelector";
 import moment from "moment";
-import { useRouter } from "next/navigation";
 import newsImage from "../../../../../public/news.png";
+import useListNewsModel from "./ListNews.viewModel";
 
 const ListNews = () => {
-  const token = useUserToken();
-  const router = useRouter();
-  const [listNews, setListNews] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await axios.get(`${process.env.API_URL}/news`, {
-        params: {
-          page: currentPage + 1,
-          page_size: 5,
-          sort: "created_at_desc",
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const res = response.data;
-      setListNews(res.data);
-    } catch (error) {
-      throw error;
-    }
-  }, [token, currentPage]);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-  const handlePaginate = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-  const pageCount = 10;
+  const useModel = useListNewsModel();
 
-  const handleDetail = (id) => {
-    router.push(`/news/${id}`);
-  };
-  const isLink = (str) => {
-    return (
-      typeof str === "string" &&
-      (str.startsWith("http://") || str.startsWith("https://"))
-    );
-  };
-  const [src, setSrc] = useState(true);
   return (
     <DefaultTemplate>
       <div className='flex items-center mb-[40px]'>
@@ -68,37 +27,47 @@ const ListNews = () => {
               <div className='w-[400px]'>Deskripsi</div>
               <div className='w-[212px] flex-1'>Tanggal</div>
             </div>
-            {listNews?.map((news, index) => {
-              return (
-                <button
-                  key={news.id}
-                  onClick={() => handleDetail(news.id)}
-                  className='w-full'
-                >
-                  <TableV2Row
-                    // key={news.id}
-                    no={(currentPage + 1) * 5 - 5 + (index + 1)}
-                    imgsrc={
-                      src && isLink(news?.photo_url)
-                        ? news?.photo_url
-                        : newsImage
-                    }
-                    rounded='rounded-[20px]'
-                    nama={news.title}
-                    deskripsi={news.description}
-                    tanggal={moment(news.created_at).format("D MMM YYYY")}
-                    btnvariant='success-500'
-                    onError={() => setSrc(false)}
-                  />
-                </button>
-              );
-            })}
+            {useModel.loading ? (
+              <div className='text-center flex justify-center w-full py-10'>
+                <div
+                  className='radial-progress animate-spin'
+                  style={{ "--value": 70 }}
+                ></div>
+              </div>
+            ) : useModel.listNews?.length !== 0 ? (
+              useModel.listNews?.map((news, index) => {
+                return (
+                  <button
+                    key={news?.id}
+                    onClick={() => useModel.handleDetail(news?.id)}
+                    className='w-full'
+                  >
+                    <TableV2Row
+                      no={(useModel.currentPage + 1) * 5 - 5 + (index + 1)}
+                      imgsrc={
+                        useModel.src && useModel.isLink(news?.photo_url)
+                          ? news?.photo_url
+                          : newsImage
+                      }
+                      rounded='rounded-[20px]'
+                      nama={news?.title}
+                      deskripsi={news?.description}
+                      tanggal={moment(news?.created_at).format("D MMM YYYY")}
+                      btnvariant='success-500'
+                      onError={() => useModel.setSrc(false)}
+                    />
+                  </button>
+                );
+              })
+            ) : (
+              <EmptyData />
+            )}
             <div className='flex justify-center mt-4'>
               <ReactPaginate
-                pageCount={pageCount} // Jumlah total halaman
+                pageCount={useModel.pageCount} // Jumlah total halaman
                 pageRangeDisplayed={3} // Jumlah halaman yang ditampilkan
                 marginPagesDisplayed={2} // Jumlah halaman di sekitar halaman aktif yang ditampilkan
-                onPageChange={handlePaginate} // Fungsi yang dipanggil saat halaman berubah
+                onPageChange={useModel.handlePaginate} // Fungsi yang dipanggil saat halaman berubah
                 containerClassName='join'
                 activeClassName='btn-active'
                 nextLabel='>>'

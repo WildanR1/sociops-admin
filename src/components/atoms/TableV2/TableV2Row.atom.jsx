@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from "next/image";
 import { Button } from "..";
 
 const TableV2Row = ({
@@ -18,11 +19,17 @@ const TableV2Row = ({
       <div className='w-[67px] p-[18.5px] flex items-center'>{no}</div>
       <div className='w-[421px] flex'>
         <div>
-          <img
-            className={`${rounded} object-cover object-center w-[124px] h-[106px]`}
+          <Image
+            width={124}
+            height={106}
+            className={`${rounded} object-cover object-center`}
             src={imgsrc}
             alt='news'
             onError={onError}
+            placeholder='blur'
+            blurDataURL={
+              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
+            }
           />
         </div>
         <div className='justify-center p-[23px]'>

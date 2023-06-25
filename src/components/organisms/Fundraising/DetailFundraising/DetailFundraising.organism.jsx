@@ -116,7 +116,7 @@ const DetailFundraising = ({ id }) => {
         <div className='mb-6 flex justify-between gap-4 text-center'>
           <div className='border-primary-700 border-2 bg-primary-25 py-10 px-8 rounded-2xl flex flex-col items-center w-[262px]'>
             <div className='mb-4 text-primary-700 font-semibold text-lg'>
-              Target Penerimaan
+              Target Penerima
             </div>
             <div className='text-xl'>
               {useModel?.fundraising?.target_recipient}
@@ -134,7 +134,7 @@ const DetailFundraising = ({ id }) => {
                 >
                   <Button
                     variant='primary-600'
-                    text='tekan untuk melihat video'
+                    text='tekan untuk melihat proposal'
                     size='medium'
                   />
                 </Link>

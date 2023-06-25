@@ -2,7 +2,7 @@
 
 import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
-import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
+import { Button, ButtonBack, Loading, TableV1Row } from "@/components/atoms";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -52,22 +52,17 @@ const RiwayatProgram = () => {
         >
           <>
             {loading ? (
-              <td colSpan={5} className='py-10 text-center'>
-                <div
-                  className='radial-progress animate-spin'
-                  style={{ "--value": 70 }}
-                ></div>
-              </td>
-            ) : riwayatFundraising.length !== 0 ? (
-              riwayatFundraising.map((riwayat, idx) => {
+              <Loading />
+            ) : riwayatFundraising?.length !== 0 ? (
+              riwayatFundraising?.map((riwayat, idx) => {
                 return (
                   <TableV1Row
                     key={idx}
                     variant='primary'
                     no={(currentPage + 1) * 5 - 5 + (idx + 1)}
-                    nama={riwayat.title}
-                    deskripsi={riwayat.description}
-                    tanggal={moment(riwayat.created_at).format("D MMM YYYY")}
+                    nama={riwayat?.title}
+                    deskripsi={riwayat?.description}
+                    tanggal={moment(riwayat?.created_at).format("D MMM YYYY")}
                     button={
                       <Button
                         text={
@@ -76,7 +71,7 @@ const RiwayatProgram = () => {
                             : "disetujui"
                         }
                         variant={
-                          riwayat.status === "REJECTED"
+                          riwayat?.status === "REJECTED"
                             ? "error-600"
                             : "success-600"
                         }

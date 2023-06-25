@@ -58,8 +58,8 @@ const RiwayatProgram = () => {
                   style={{ "--value": 70 }}
                 ></div>
               </td>
-            ) : riwayatVolunter.length !== 0 ? (
-              riwayatVolunter.map((riwayat, idx) => {
+            ) : riwayatVolunter?.length !== 0 ? (
+              riwayatVolunter?.map((riwayat, idx) => {
                 return (
                   <TableV1Row
                     key={idx}

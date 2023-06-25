@@ -1,10 +1,39 @@
+"use client";
 import { ButtonBack, TableV2Row } from "@/components/atoms";
 import { DefaultTemplate } from "@/components/template";
 import SepatuNike from "../../../../../public/SepatuNike.png";
+import { useEffect, useRef } from "react";
 
 const PermintaanKomunitas = () => {
+  const buttonRef = useRef(null);
+  useEffect(() => {
+    buttonRef.current.click();
+  }, []);
   return (
     <DefaultTemplate>
+      <label htmlFor='my_modal_7' ref={buttonRef} className='btn hidden'>
+        open modal
+      </label>
+      <input type='checkbox' id='my_modal_7' className='modal-toggle' />
+      <div className='modal'>
+        <div className='modal-box'>
+          <div className='flex justify-end'>
+            <label
+              className='btn btn-circle btn-outline border-0 text-center'
+              htmlFor='my_modal_7'
+            >
+              X
+            </label>
+          </div>
+          <div className='flex justify-center mx-auto w-[400px] h-[400px]'>
+            <iframe
+              src='https://embed.lottiefiles.com/animation/94056'
+              className='w-full h-full'
+            />
+          </div>
+          <h3 className='text-2xl font-bold text-center'>Under Development</h3>
+        </div>
+      </div>
       <div className='flex items-center mb-[40px]'>
         <div className='pr-4'>
           <ButtonBack />
