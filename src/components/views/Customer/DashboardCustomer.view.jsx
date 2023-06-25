@@ -1,16 +1,62 @@
 /* eslint-disable @next/next/no-img-element */
-import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
+"use client";
+import { ButtonBigIcon, Loading, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
 import { Statistic } from "@/components/organisms";
 import { DefaultTemplate } from "@/components/template";
+import {
+  useRecentFundraisingUser,
+  useRecentUser,
+  useRecentVolunteerUser,
+  useTypeRecentFundraisingUser,
+  useTypeRecentUser,
+  useTypeRecentVolunteerUser,
+  useUserToken,
+} from "@/config/redux/user/userSelector";
+import {
+  retrieveRecentFundraisingUser,
+  retrieveRecentUser,
+  retrieveRecentVolunteerUser,
+} from "@/config/redux/user/userThunk";
+import { useEffect } from "react";
+import { useCallback } from "react";
 import {
   FaClipboardList,
   FaUserFriends,
   FaUserPlus,
   FaUsers,
 } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 
 const DashboardCustomer = () => {
+  const dispatch = useDispatch();
+  const token = useUserToken();
+  const typeRecentUser = useTypeRecentUser();
+  const typeRecentFundraisingUser = useTypeRecentFundraisingUser();
+  const typeRecentVolunteerUser = useTypeRecentVolunteerUser();
+  const recentUser = useRecentUser();
+  const recentFundraisingUser = useRecentFundraisingUser();
+  const recentVolunteerUser = useRecentVolunteerUser();
+  const loadingRecentUser = typeRecentUser === retrieveRecentUser.pending.type;
+  const loadingRecentFundraisingUser =
+    typeRecentFundraisingUser === retrieveRecentFundraisingUser.pending.type;
+  const loadingRecentVolunteerUser =
+    typeRecentVolunteerUser === retrieveRecentVolunteerUser.pending.type;
+
+  const fetchData = useCallback(() => {
+    dispatch(retrieveRecentUser({ token }));
+    dispatch(retrieveRecentFundraisingUser({ token }));
+    dispatch(retrieveRecentVolunteerUser({ token }));
+  }, [dispatch, token]);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+  const isLink = (str) => {
+    return (
+      typeof str === "string" &&
+      (str.startsWith("http://") || str.startsWith("https://"))
+    );
+  };
   return (
     <DefaultTemplate>
       <div className='grid grid-cols-1 gap-[30px]'>
@@ -57,155 +103,95 @@ const DashboardCustomer = () => {
           <Statistic variant='customer' />
         </div>
         <div className='grid grid-cols-3'>
-          <NewProgram title='Permintan Komunitas Baru'>
-            <ProgramItem
-              title='Capstone12'
-              deskripsi='Jakarta'
-              image={
-                <img
-                  src='/SepatuNike.png'
-                  alt='foto profil'
-                  className='rounded-full object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='Capstone12'
-              deskripsi='Jakarta'
-              image={
-                <img
-                  src='/SepatuNike.png'
-                  alt='foto profil'
-                  className='rounded-full object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='Capstone12'
-              deskripsi='Jakarta'
-              image={
-                <img
-                  src='/SepatuNike.png'
-                  alt='foto profil'
-                  className='rounded-full object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='Capstone12'
-              deskripsi='Jakarta'
-              image={
-                <img
-                  src='/SepatuNike.png'
-                  alt='foto profil'
-                  className='rounded-full object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-          </NewProgram>
           <NewProgram title='Pengguna Baru'>
-            <ProgramItem
-              title='Benny Chagur'
-              deskripsi='Member'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='Chynita Heree'
-              deskripsi='Member'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='David Yers'
-              deskripsi='Member'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
-            <ProgramItem
-              title='Hayder Jahid'
-              deskripsi='Member'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='netral'
-            />
+            {loadingRecentUser ? (
+              <Loading />
+            ) : recentFundraisingUser.length !== 0 ? (
+              recentFundraisingUser.map((item) => {
+                return (
+                  <ProgramItem
+                    key={item?.id}
+                    title={item?.Name}
+                    image={
+                      <img
+                        src={
+                          isLink(item?.PhotoURL)
+                            ? item?.PhotoURL
+                            : "/exampleProfile.png"
+                        }
+                        alt='foto profil'
+                        className='rounded-md object-cover object-center'
+                      />
+                    }
+                    variant='netral'
+                  />
+                );
+              })
+            ) : (
+              <div className='capitalize text-center py-10 text-lg'>
+                data tidak ada
+              </div>
+            )}
           </NewProgram>
-          <NewProgram title='Pengguna mengikuti program'>
-            <ProgramItem
-              title='Benny Chagur'
-              deskripsi='Volunteer'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='label-primary'
-            />
-            <ProgramItem
-              title='Chynita Heree'
-              deskripsi='Fundraising'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='label-error'
-            />
-            <ProgramItem
-              title='David Yers'
-              deskripsi='Volunteer'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='label-primary'
-            />
-            <ProgramItem
-              title='Hayder Jahid'
-              deskripsi='Fundraising'
-              image={
-                <img
-                  src='/exampleProfile.png'
-                  alt='foto profil'
-                  className='rounded-md object-cover object-center'
-                />
-              }
-              variant='label-error'
-            />
+          <NewProgram title='Pengguna Fundraising'>
+            {loadingRecentFundraisingUser ? (
+              <Loading />
+            ) : recentUser.length !== 0 ? (
+              recentUser.map((item) => {
+                return (
+                  <ProgramItem
+                    key={item?.id}
+                    title={item?.Name}
+                    image={
+                      <img
+                        src={
+                          isLink(item?.PhotoURL)
+                            ? item?.PhotoURL
+                            : "/exampleProfile.png"
+                        }
+                        alt='foto profil'
+                        className='rounded-md object-cover object-center'
+                      />
+                    }
+                    variant='netral'
+                  />
+                );
+              })
+            ) : (
+              <div className='capitalize text-center py-10 text-lg'>
+                data tidak ada
+              </div>
+            )}
+          </NewProgram>
+          <NewProgram title='Pengguna Volunteer'>
+            {loadingRecentVolunteerUser ? (
+              <Loading />
+            ) : recentVolunteerUser.length !== 0 ? (
+              recentVolunteerUser.map((item) => {
+                return (
+                  <ProgramItem
+                    key={item?.id}
+                    title={item?.Name}
+                    image={
+                      <img
+                        src={
+                          isLink(item?.PhotoURL)
+                            ? item?.PhotoURL
+                            : "/exampleProfile.png"
+                        }
+                        alt='foto profil'
+                        className='rounded-md object-cover object-center'
+                      />
+                    }
+                    variant='netral'
+                  />
+                );
+              })
+            ) : (
+              <div className='capitalize text-center py-10 text-lg'>
+                data tidak ada
+              </div>
+            )}
           </NewProgram>
         </div>
       </div>
