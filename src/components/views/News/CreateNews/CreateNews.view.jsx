@@ -177,10 +177,15 @@ const CreateNews = () => {
           />
           <div className='mt-8 flex justify-between gap-8'>
             <Button
+              type='reset'
               width='full'
               variant='primary-600'
               text='Batalkan'
               size='large'
+              onClick={() => {
+                setSelectedImage(null);
+                router.back();
+              }}
             />
             <Button
               type='submit'
