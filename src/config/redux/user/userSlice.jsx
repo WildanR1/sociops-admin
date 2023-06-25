@@ -5,10 +5,14 @@ import {
   retrieveRecentFundraisingUser,
   retrieveRecentUser,
   retrieveRecentVolunteerUser,
+  retrievePenggunaFundraising,
+  retrievePenggunaVolunteer,
+  retrieveDaftarAkunPengguna,
 } from "./userThunk";
 
 const initialState = {
   user: {},
+  penggunaVolunteer: [],
   token: "",
   daftarAkunPengguna: [],
   recentUser: [],
@@ -62,7 +66,27 @@ const userSlice = createSlice({
         };
       })
       //#endregion retrieve user info
-
+      //#region retrieve riwayat program fundraising
+      .addCase(retrievePenggunaVolunteer.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaVolunteer.fulfilled, (state, action) => {
+        return {
+          ...state,
+          penggunaVolunteer: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaVolunteer.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      //#endregion retrieve riwayat program fundraising
       //#region retrieve daftar akun pengguna
       .addCase(retrieveDaftarAkunPengguna.pending, (state, action) => {
         return {
@@ -145,8 +169,29 @@ const userSlice = createSlice({
           ...state,
           typeRecentVolunteerUser: action.type,
         };
-      });
+      })
     //#endregion retrieve pengguna volunteer
+    //#region retrieve riwayat program fundraising
+      .addCase(retrievePenggunaFundraising.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaFundraising.fulfilled, (state, action) => {
+        return {
+          ...state,
+          penggunaFundraising: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaFundraising.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      });
+    //#endregion retrieve riwayat program fundraising
   },
 });
 
