@@ -3,7 +3,6 @@
 import {
   Button,
   ButtonBack,
-  EmptyData,
   Loading,
   TableV3Cell,
   TableV3Header,
@@ -108,11 +107,6 @@ const PenggunaVolunteer = () => {
                         <div className='text-sm font-medium text-Gray-800'>
                           {user?.Name}
                         </div>
-                        <div className='flex'>
-                          <div className='text-xs text-Gray-500'>
-                            {user?.Role}
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </TableV3Cell>
@@ -147,7 +141,9 @@ const PenggunaVolunteer = () => {
               );
             })
           ) : (
-            <EmptyData />
+            <td colSpan={5} className='capitalize text-center py-10 text-lg'>
+              data tidak ada
+            </td>
           )}
         </TableV3>
         <div className='flex justify-center mt-4'>
