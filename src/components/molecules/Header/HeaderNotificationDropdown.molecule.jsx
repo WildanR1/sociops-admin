@@ -17,25 +17,50 @@ const HeaderNotificationDropdown = () => {
     router.push("/");
   };
   const user = useUser();
+
   return (
     <>
       <div className='form-control hover:bg-slate-400 hover:rounded-lg'>
-        <div className='indicator'>
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            className='h-5 w-5'
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9'
-            />
-          </svg>
-          <span className='badge badge-xs badge-primary indicator-item'></span>
+        <label htmlFor='my_modal_7' className=''>
+          <div className='indicator'>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              className='h-5 w-5'
+              fill='none'
+              viewBox='0 0 24 24'
+              stroke='currentColor'
+            >
+              <path
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='2'
+                d='M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9'
+              />
+            </svg>
+            <span className='badge badge-xs badge-primary indicator-item'></span>
+          </div>
+        </label>
+        <input type='checkbox' id='my_modal_7' className='modal-toggle' />
+        <div className='modal'>
+          <div className='modal-box'>
+            <div className='flex justify-end'>
+              <label
+                className='btn btn-circle btn-outline border-0 text-center'
+                htmlFor='my_modal_7'
+              >
+                X
+              </label>
+            </div>
+            <div className='flex justify-center mx-auto w-[400px] h-[400px]'>
+              <iframe
+                src='https://embed.lottiefiles.com/animation/94056'
+                className='w-full h-full'
+              />
+            </div>
+            <h3 className='text-2xl font-bold text-center'>
+              Under Development
+            </h3>
+          </div>
         </div>
       </div>
       <div className='dropdown dropdown-end ml-8 mr-4'>

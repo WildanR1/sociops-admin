@@ -69,9 +69,6 @@ const DaftarAkunPengguna = () => {
                       <div className='text-sm font-medium text-Gray-800'>
                         {daftar?.Name}
                       </div>
-                      <div className='flex'>
-                        <div className='text-xs text-Gray-500'>Member</div>
-                      </div>
                     </div>
                   </TableV3Cell>
                 </TableV3Row>
