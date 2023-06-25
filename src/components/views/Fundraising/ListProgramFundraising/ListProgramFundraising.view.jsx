@@ -28,20 +28,20 @@ const ListProgramFundraising = () => {
         >
           {useModel.loading ? (
             <Loading />
-          ) : useModel.program.length !== 0 ? (
-            useModel.program.map((volunteer, index) => (
+          ) : useModel.program?.length !== 0 ? (
+            useModel.program?.map((volunteer, index) => (
               <TableV1Row
-                key={volunteer.id}
+                key={volunteer?.id}
                 variant='warning'
                 no={(useModel.currentPage + 1) * 5 - 5 + (index + 1)}
-                nama={volunteer.title}
-                deskripsi={volunteer.description}
+                nama={volunteer?.title}
+                deskripsi={volunteer?.description}
                 tanggal={
-                  moment(volunteer.start_date).format("D MMM YYYY") +
+                  moment(volunteer?.start_date).format("D MMM YYYY") +
                   " - " +
-                  moment(volunteer.end_date).format("D MMM YYYY")
+                  moment(volunteer?.end_date).format("D MMM YYYY")
                 }
-                button={volunteer.location}
+                button={volunteer?.location}
               />
             ))
           ) : (
