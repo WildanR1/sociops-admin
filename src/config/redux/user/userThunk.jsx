@@ -130,9 +130,11 @@ export const retrieveRecentVolunteerUser = createAsyncThunk(
       const response = await res.data;
       const recentVolunteerUser = await response.data;
       return recentVolunteerUser;
-      } catch (error) {
+    } catch (error) {
       throw error;
     }
+  },
+);
 export const retrievePenggunaFundraising = createAsyncThunk(
   "user/retrievePenggunaFundraising",
   async (param) => {
