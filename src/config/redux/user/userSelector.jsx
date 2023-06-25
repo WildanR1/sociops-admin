@@ -16,3 +16,8 @@ export const useDaftarPengguna = () =>
 export const useTypeDaftarAkunPengguna = () =>
   useSelector((state) => state.user.typeDaftarAkunPengguna);
 
+export const usePenggunaFundraising = () =>
+  useSelector((state) => state.user.penggunaFundraising);
+
+export const usePenggunaFundraisingType = () =>
+  useSelector((state) => state.user.type);

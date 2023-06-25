@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserInfo, retrievePenggunaVolunteer } from "./userThunk";
-import { getUserInfo, retrieveDaftarAkunPengguna } from "./userThunk";
+import {
+  getUserInfo,
+  retrievePenggunaFundraising,
+  retrievePenggunaVolunteer,
+  retrieveDaftarAkunPengguna,
+} from "./userThunk";
 
 const initialState = {
   user: {},
@@ -73,8 +77,8 @@ const userSlice = createSlice({
           type: action.type,
         };
       })
-    //#endregion retrieve riwayat program fundraising
-    //#region retrieve daftar akun pengguna
+      //#endregion retrieve riwayat program fundraising
+      //#region retrieve daftar akun pengguna
       .addCase(retrieveDaftarAkunPengguna.pending, (state, action) => {
         return {
           ...state,
@@ -93,8 +97,29 @@ const userSlice = createSlice({
           ...state,
           typeDaftarAkunPengguna: action.type,
         };
+      })
+      //#endregion retrieve daftar akun pengguna
+      //#region retrieve riwayat program fundraising
+      .addCase(retrievePenggunaFundraising.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaFundraising.fulfilled, (state, action) => {
+        return {
+          ...state,
+          penggunaFundraising: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaFundraising.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
       });
-    //#endregion retrieve daftar akun pengguna
+    //#endregion retrieve riwayat program fundraising
   },
 });
 
