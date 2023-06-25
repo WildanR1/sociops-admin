@@ -7,7 +7,6 @@ import {
   retrieveRecentVolunteerUser,
   retrievePenggunaFundraising,
   retrievePenggunaVolunteer,
-  retrieveDaftarAkunPengguna,
 } from "./userThunk";
 
 const initialState = {
@@ -170,8 +169,8 @@ const userSlice = createSlice({
           typeRecentVolunteerUser: action.type,
         };
       })
-    //#endregion retrieve pengguna volunteer
-    //#region retrieve riwayat program fundraising
+      //#endregion retrieve pengguna volunteer
+      //#region retrieve riwayat program fundraising
       .addCase(retrievePenggunaFundraising.pending, (state, action) => {
         return {
           ...state,

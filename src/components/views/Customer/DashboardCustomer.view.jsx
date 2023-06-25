@@ -18,6 +18,7 @@ import {
   retrieveRecentUser,
   retrieveRecentVolunteerUser,
 } from "@/config/redux/user/userThunk";
+import Image from "next/image";
 import { useEffect } from "react";
 import { useCallback } from "react";
 import {
@@ -107,19 +108,25 @@ const DashboardCustomer = () => {
             {loadingRecentUser ? (
               <Loading />
             ) : recentFundraisingUser.length !== 0 ? (
-              recentFundraisingUser.map((item) => {
+              recentFundraisingUser.map((item, idx) => {
                 return (
                   <ProgramItem
-                    key={item?.id}
+                    key={idx}
                     title={item?.Name}
                     image={
-                      <img
+                      <Image
                         src={
                           isLink(item?.PhotoURL)
                             ? item?.PhotoURL
                             : "/exampleProfile.png"
                         }
                         alt='foto profil'
+                        width={40}
+                        height={40}
+                        placeholder='blur'
+                        blurDataURL={
+                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
+                        }
                         className='rounded-md object-cover object-center'
                       />
                     }
@@ -137,17 +144,23 @@ const DashboardCustomer = () => {
             {loadingRecentFundraisingUser ? (
               <Loading />
             ) : recentUser.length !== 0 ? (
-              recentUser.map((item) => {
+              recentUser.map((item, idx) => {
                 return (
                   <ProgramItem
-                    key={item?.id}
+                    key={idx}
                     title={item?.Name}
                     image={
-                      <img
+                      <Image
                         src={
                           isLink(item?.PhotoURL)
                             ? item?.PhotoURL
                             : "/exampleProfile.png"
+                        }
+                        width={40}
+                        height={40}
+                        placeholder='blur'
+                        blurDataURL={
+                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
                         }
                         alt='foto profil'
                         className='rounded-md object-cover object-center'
@@ -167,17 +180,23 @@ const DashboardCustomer = () => {
             {loadingRecentVolunteerUser ? (
               <Loading />
             ) : recentVolunteerUser.length !== 0 ? (
-              recentVolunteerUser.map((item) => {
+              recentVolunteerUser.map((item, idx) => {
                 return (
                   <ProgramItem
-                    key={item?.id}
+                    key={idx}
                     title={item?.Name}
                     image={
-                      <img
+                      <Image
                         src={
                           isLink(item?.PhotoURL)
                             ? item?.PhotoURL
                             : "/exampleProfile.png"
+                        }
+                        width={40}
+                        height={40}
+                        placeholder='blur'
+                        blurDataURL={
+                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
                         }
                         alt='foto profil'
                         className='rounded-md object-cover object-center'
