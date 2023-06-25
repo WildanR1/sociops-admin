@@ -29,15 +29,15 @@ const PengajuanProgramFundraising = () => {
           <>
             {useModel.loading ? (
               <Loading />
-            ) : useModel.pengajuan.length !== 0 ? (
-              useModel.pengajuan.map((fundraising, index) => (
+            ) : useModel.pengajuan?.length !== 0 ? (
+              useModel.pengajuan?.map((fundraising, index) => (
                 <TableV1Row
-                  key={fundraising.id}
+                  key={fundraising?.id}
                   variant='warning'
                   no={(useModel.currentPage + 1) * 5 - 5 + (index + 1)}
-                  nama={fundraising.title}
-                  deskripsi={fundraising.description}
-                  tanggal={moment(fundraising.created_at).format("D MMM YYYY")}
+                  nama={fundraising?.title}
+                  deskripsi={fundraising?.description}
+                  tanggal={moment(fundraising?.created_at).format("D MMM YYYY")}
                   button={
                     <Button
                       text='Lihat Detail'
@@ -45,7 +45,7 @@ const PengajuanProgramFundraising = () => {
                       fontSize='medium'
                       size='medium'
                       width={"w-full"}
-                      onClick={() => useModel.handleDetail(fundraising.id)}
+                      onClick={() => useModel.handleDetail(fundraising?.id)}
                     />
                   }
                 />

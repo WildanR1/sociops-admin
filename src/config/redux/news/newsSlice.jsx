@@ -1,8 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { retrieveDetailNews } from "./newsThunk";
+import { retrieveDetailNews, retrieveListNews } from "./newsThunk";
 
 const initialState = {
   newsDetail: {},
+  listNews: [],
+
+  type: "",
 };
 
 const newsSlice = createSlice({
@@ -45,8 +48,30 @@ const newsSlice = createSlice({
           ...state,
           type: action.type,
         };
+      })
+      //#endregion retrieve detail news
+
+      //#region retrieve list news
+      .addCase(retrieveListNews.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrieveListNews.fulfilled, (state, action) => {
+        return {
+          ...state,
+          listNews: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrieveListNews.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
       });
-    //#endregion retrieve detail news
+    //#endregion retrieve lsit news
   },
 });
 

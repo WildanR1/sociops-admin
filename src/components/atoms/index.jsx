@@ -16,3 +16,4 @@ export { default as TableV3Header } from "./TableV3/TableV3Header.atom";
 export { default as TableV3Row } from "./TableV3/TableV3Row.atom";
 export { default as TableV3Cell } from "./TableV3/TableV3Cell.atom";
 export { default as Loading } from "./Loading/Loading.atom";
+export { default as EmptyData } from "./EmptyData/EmptyData.atom";

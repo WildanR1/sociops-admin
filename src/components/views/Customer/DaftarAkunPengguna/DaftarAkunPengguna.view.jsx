@@ -40,8 +40,8 @@ const DaftarAkunPengguna = () => {
                 style={{ "--value": 70 }}
               ></div>
             </td>
-          ) : useModel.pengguna.length !== 0 ? (
-            useModel.pengguna.map((daftar, idx) => {
+          ) : useModel.pengguna?.length !== 0 ? (
+            useModel.pengguna?.map((daftar, idx) => {
               return (
                 <TableV3Row key={idx}>
                   <TableV3Cell className='text-center font-semibold'>

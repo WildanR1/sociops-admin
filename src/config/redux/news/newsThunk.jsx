@@ -35,3 +35,27 @@ export const createNews = createAsyncThunk("news/createNews", async (param) => {
     throw error;
   }
 });
+
+export const retrieveListNews = createAsyncThunk(
+  "news/retrieveListNews",
+  async (param) => {
+    try {
+      const req = await axios.get(`${process.env.API_URL}/news`, {
+        params: {
+          page: param.currentPage + 1,
+          page_size: 5,
+          sort: "created_at_desc",
+        },
+        headers: {
+          Authorization: `Bearer ${param.token}`,
+        },
+      });
+
+      const res = await req.data;
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      throw error;
+    }
+  },
+);
