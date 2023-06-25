@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getUserInfo, retrievePenggunaVolunteer } from "./userThunk";
 import { getUserInfo, retrieveDaftarAkunPengguna } from "./userThunk";
 
 const initialState = {
   user: {},
+  penggunaVolunteer: [],
   token: "",
   daftarAkunPengguna: [],
 
@@ -51,8 +53,28 @@ const userSlice = createSlice({
         };
       })
       //#endregion retrieve user info
-
-      //#region retrieve daftar akun pengguna
+      //#region retrieve riwayat program fundraising
+      .addCase(retrievePenggunaVolunteer.pending, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaVolunteer.fulfilled, (state, action) => {
+        return {
+          ...state,
+          penggunaVolunteer: action.payload,
+          type: action.type,
+        };
+      })
+      .addCase(retrievePenggunaVolunteer.rejected, (state, action) => {
+        return {
+          ...state,
+          type: action.type,
+        };
+      })
+    //#endregion retrieve riwayat program fundraising
+    //#region retrieve daftar akun pengguna
       .addCase(retrieveDaftarAkunPengguna.pending, (state, action) => {
         return {
           ...state,

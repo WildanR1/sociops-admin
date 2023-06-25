@@ -18,7 +18,31 @@ export const getUserInfo = createAsyncThunk(
     }
   },
 );
+export const retrievePenggunaVolunteer = createAsyncThunk(
+  "user/retrievePenggunaVolunteer",
+  async (param) => {
+    try {
+      const response = await axios.get(
+        `${process.env.API_URL}/users/participants`,
+        {
+          params: {
+            page: param.currentPage + 1,
+            page_size: 5,
+            sort: "created_at_desc",
+            campaign_type: "VOLUNTEER",
+          },
+          headers: {
+            Authorization: `Bearer ${param.token}`,
+          },
+        },
+      );
+      const res = response.data;
+      const data = res.data;
 
+      return data;
+      } catch (error) {
+      throw error;
+    }
 export const retrieveDaftarAkunPengguna = createAsyncThunk(
   "user/retrieveDaftarAkunPengguna",
   async (param) => {
