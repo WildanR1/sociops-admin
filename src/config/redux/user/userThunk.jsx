@@ -40,6 +40,26 @@ export const retrievePenggunaVolunteer = createAsyncThunk(
       const data = res.data;
 
       return data;
+      } catch (error) {
+      throw error;
+    }
+export const retrieveDaftarAkunPengguna = createAsyncThunk(
+  "user/retrieveDaftarAkunPengguna",
+  async (param) => {
+    try {
+      const res = await axios.get(`${process.env.API_URL}/users`, {
+        params: {
+          page: param.currentPage + 1,
+          page_size: 5,
+          sort: "created_at_desc",
+        },
+        headers: {
+          Authorization: `Bearer ${param.token}`,
+        },
+      });
+      const response = await res.data;
+      const daftarAkunPengguna = await response.data;
+      return daftarAkunPengguna;
     } catch (error) {
       throw error;
     }

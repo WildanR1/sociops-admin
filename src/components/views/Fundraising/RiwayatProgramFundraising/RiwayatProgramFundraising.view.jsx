@@ -2,7 +2,7 @@
 
 import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
-import { Button, ButtonBack, TableV1Row } from "@/components/atoms";
+import { Button, ButtonBack, Loading, TableV1Row } from "@/components/atoms";
 import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -52,12 +52,7 @@ const RiwayatProgram = () => {
         >
           <>
             {loading ? (
-              <td colSpan={5} className='py-10 text-center'>
-                <div
-                  className='radial-progress animate-spin'
-                  style={{ "--value": 70 }}
-                ></div>
-              </td>
+              <Loading />
             ) : riwayatFundraising.length !== 0 ? (
               riwayatFundraising.map((riwayat, idx) => {
                 return (

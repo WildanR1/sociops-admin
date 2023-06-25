@@ -1,60 +1,14 @@
 "use client";
 import { DefaultTemplate } from "@/components/template";
 import { TableV1 } from "@/components/organisms";
-import { ButtonBack, TableV1Row } from "@/components/atoms";
-import { useUserToken } from "@/config/redux/user/userSelector";
-import { useCallback, useEffect, useState } from "react";
-import axios from "axios";
+import { ButtonBack, Loading, TableV1Row } from "@/components/atoms";
 import moment from "moment";
 import ReactPaginate from "react-paginate";
+import useListProgramFundraisingModel from "./ListProgramFundraising.viewModel";
 
 const ListProgramFundraising = () => {
-  const token = useUserToken();
-  const [listVolunteer, setListVolunteer] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const fetchData = useCallback(async () => {
-    try {
-      const response = await axios.get(`${process.env.API_URL}/campaigns`, {
-        params: {
-          page: currentPage + 1,
-          page_size: 5,
-          type: "FUNDRAISING",
-          status: "ACCEPTED",
-          sort: "created_at_desc",
-        },
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const res = response.data;
-      setListVolunteer(res.data);
-    } catch (error) {
-      throw error;
-    }
-  }, [token, currentPage]);
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+  const useModel = useListProgramFundraisingModel();
 
-  const handlePaginate = ({ selected }) => {
-    setCurrentPage(selected);
-  };
-
-  const pageCount = 10;
-
-  const renderTableKosong = () => {
-    const rows = [];
-    for (let i = 0; i < 5; i++) {
-      rows.push(
-        <TableV1Row
-          key={i}
-          variant='primary'
-          deskripsi='Data tidak tersedia'
-        />,
-      );
-    }
-    return rows;
-  };
   return (
     <DefaultTemplate>
       <div className='mb-[7px] pb-4 flex items-center'>
@@ -72,12 +26,14 @@ const ListProgramFundraising = () => {
           header4='Tanggal'
           header5='Lokasi'
         >
-          {listVolunteer.length > 0 ? (
-            listVolunteer.map((volunteer, index) => (
+          {useModel.loading ? (
+            <Loading />
+          ) : useModel.program.length !== 0 ? (
+            useModel.program.map((volunteer, index) => (
               <TableV1Row
                 key={volunteer.id}
                 variant='warning'
-                no={(currentPage + 1) * 5 - 5 + (index + 1)}
+                no={(useModel.currentPage + 1) * 5 - 5 + (index + 1)}
                 nama={volunteer.title}
                 deskripsi={volunteer.description}
                 tanggal={
@@ -89,15 +45,17 @@ const ListProgramFundraising = () => {
               />
             ))
           ) : (
-            <>{renderTableKosong()}</>
+            <td colSpan={5} className='capitalize text-center py-10 text-lg'>
+              data tidak ada
+            </td>
           )}
         </TableV1>
         <div className='flex justify-center mt-4'>
           <ReactPaginate
-            pageCount={pageCount} // Jumlah total halaman
+            pageCount={useModel.pageCount} // Jumlah total halaman
             pageRangeDisplayed={3} // Jumlah halaman yang ditampilkan
             marginPagesDisplayed={2} // Jumlah halaman di sekitar halaman aktif yang ditampilkan
-            onPageChange={handlePaginate} // Fungsi yang dipanggil saat halaman berubah
+            onPageChange={useModel.handlePaginate} // Fungsi yang dipanggil saat halaman berubah
             containerClassName='join'
             activeClassName='btn-active'
             nextLabel='>>'
