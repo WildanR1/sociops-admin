@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { ButtonBigIcon, ProgramItem } from "@/components/atoms";
 import { NewProgram } from "@/components/molecules";
 import { Statistic } from "@/components/organisms";
@@ -60,25 +61,49 @@ const DashboardCustomer = () => {
             <ProgramItem
               title='Capstone12'
               deskripsi='Jakarta'
-              linkImage='/SepatuNike.png'
+              image={
+                <img
+                  src='/SepatuNike.png'
+                  alt='foto profil'
+                  className='rounded-full object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='Capstone12'
               deskripsi='Jakarta'
-              linkImage='/SepatuNike.png'
+              image={
+                <img
+                  src='/SepatuNike.png'
+                  alt='foto profil'
+                  className='rounded-full object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='Capstone12'
               deskripsi='Jakarta'
-              linkImage='/SepatuNike.png'
+              image={
+                <img
+                  src='/SepatuNike.png'
+                  alt='foto profil'
+                  className='rounded-full object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='Capstone12'
               deskripsi='Jakarta'
-              linkImage='/SepatuNike.png'
+              image={
+                <img
+                  src='/SepatuNike.png'
+                  alt='foto profil'
+                  className='rounded-full object-cover object-center'
+                />
+              }
               variant='netral'
             />
           </NewProgram>
@@ -86,51 +111,99 @@ const DashboardCustomer = () => {
             <ProgramItem
               title='Benny Chagur'
               deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='Chynita Heree'
               deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='David Yers'
               deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='netral'
             />
             <ProgramItem
               title='Hayder Jahid'
               deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='netral'
             />
           </NewProgram>
           <NewProgram title='Pengguna mengikuti program'>
             <ProgramItem
               title='Benny Chagur'
-              deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              deskripsi='Volunteer'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='label-primary'
             />
             <ProgramItem
               title='Chynita Heree'
-              deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              deskripsi='Fundraising'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='label-error'
             />
             <ProgramItem
               title='David Yers'
-              deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              deskripsi='Volunteer'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='label-primary'
             />
             <ProgramItem
               title='Hayder Jahid'
-              deskripsi='Member'
-              linkImage='/exampleProfile.png'
+              deskripsi='Fundraising'
+              image={
+                <img
+                  src='/exampleProfile.png'
+                  alt='foto profil'
+                  className='rounded-md object-cover object-center'
+                />
+              }
               variant='label-error'
             />
           </NewProgram>

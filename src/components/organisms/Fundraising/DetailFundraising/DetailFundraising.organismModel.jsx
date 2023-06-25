@@ -1,14 +1,14 @@
-import { retrieveDetailVolunteer } from "@/config/redux/volunteer/volunteerThunk";
-import { useDetailVolunteer } from "@/config/redux/volunteer/volunteerSelector";
+import { useDetailFundraising } from "@/config/redux/fundraising/fundraisingSelector";
+import { retrieveDetailFundraising } from "@/config/redux/fundraising/fundraisingThunk";
 import { useUserToken } from "@/config/redux/user/userSelector";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import axios from "axios";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 
-const useDetailVolunteerModel = ({ id }) => {
-  const volunteer = useDetailVolunteer();
+const useDetailFundraisingModel = ({ id }) => {
+  const fundraising = useDetailFundraising();
   const token = useUserToken();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -33,7 +33,7 @@ const useDetailVolunteerModel = ({ id }) => {
       );
       const res = await req.data;
 
-      router.push("/volunteer/riwayat-program");
+      router.push("/fundraising/riwayat-program");
       toast(res.message, { type: "success" });
     } catch (error) {
       toast("Failed update campaign", { type: "error" });
@@ -54,7 +54,7 @@ const useDetailVolunteerModel = ({ id }) => {
       );
       const res = await req.data;
 
-      router.push("/volunteer/riwayat-program");
+      router.push("/fundraising/riwayat-program");
       toast(res.message, { type: "success" });
     } catch (error) {
       toast("Failed update campaign", { type: "error" });
@@ -63,7 +63,7 @@ const useDetailVolunteerModel = ({ id }) => {
   };
 
   useEffect(() => {
-    dispatch(retrieveDetailVolunteer({ id, token }));
+    dispatch(retrieveDetailFundraising({ id, token }));
   }, [dispatch, id, token]);
 
   const [src, setSrc] = useState(true);
@@ -71,11 +71,11 @@ const useDetailVolunteerModel = ({ id }) => {
   return {
     src,
     setSrc,
-    volunteer,
+    fundraising,
     isLink,
     handleUpdateAccepted,
     handleUpdateRejected,
   };
 };
 
-export default useDetailVolunteerModel;
+export default useDetailFundraisingModel;

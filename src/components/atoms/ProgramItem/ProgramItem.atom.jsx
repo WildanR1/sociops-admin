@@ -1,4 +1,5 @@
-const ProgramItem = ({ title, deskripsi, nomor, variant }) => {
+/* eslint-disable @next/next/no-img-element */
+const ProgramItem = ({ title, deskripsi, nomor, variant, image }) => {
   if (variant) {
     switch (variant) {
       case "netral":
@@ -17,7 +18,12 @@ const ProgramItem = ({ title, deskripsi, nomor, variant }) => {
   }
   return (
     <div className='flex items-center'>
-      <div className='text-sm text-Gray-800 px-[10px] pt-0 pb-[10px] h-full'>{`${nomor}.`}</div>
+      {image ? (
+        <div className='mr-[10px] w-10 h-10'>{image}</div>
+      ) : (
+        <div className='text-sm text-Gray-800 px-[10px] pt-0 pb-[10px] h-full'>{`${nomor}.`}</div>
+      )}
+
       <div className='flex flex-col'>
         <div className='line-clamp-1'>
           <div className='text-sm text-Gray-800'>{title}</div>

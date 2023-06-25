@@ -90,9 +90,9 @@ const PengajuanProgramFundraising = () => {
                   <Button
                     text='Lihat Detail'
                     variant='warning-400'
-                    width='w-full'
                     fontSize='medium'
                     size='medium'
+                    width={"w-full"}
                     onClick={() => handleDetail(fundraising.id)}
                   />
                 }

@@ -65,18 +65,22 @@ const RiwayatProgram = () => {
                     key={idx}
                     variant='primary'
                     no={(currentPage + 1) * 5 - 5 + (idx + 1)}
-                    nama={riwayat.title}
-                    deskripsi={riwayat.description}
-                    tanggal={moment(riwayat.created_at).format("D MMM YYYY")}
+                    nama={riwayat?.title}
+                    deskripsi={riwayat?.description}
+                    tanggal={moment(riwayat?.created_at).format("D MMM YYYY")}
                     button={
                       <Button
-                        text={riwayat.status}
+                        text={
+                          riwayat?.status === "REJECTED"
+                            ? "ditolak"
+                            : "disetujui"
+                        }
                         variant={
-                          riwayat.status === "REJECTED"
+                          riwayat?.status === "REJECTED"
                             ? "error-600"
                             : "success-600"
                         }
-                        width='w-full'
+                        width='full'
                         fontSize='medium'
                         size='medium'
                       />
