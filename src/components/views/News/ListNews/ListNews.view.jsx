@@ -49,7 +49,7 @@ const ListNews = () => {
                           ? news?.photo_url
                           : newsImage
                       }
-                      rounded='rounded-[20px]'
+                      imgStyle='square'
                       nama={news?.title}
                       deskripsi={news?.description}
                       tanggal={moment(news?.created_at).format("D MMM YYYY")}
