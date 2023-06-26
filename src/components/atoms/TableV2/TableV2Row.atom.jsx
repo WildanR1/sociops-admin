@@ -9,7 +9,7 @@ const TableV2Row = ({
   comunitydesc,
   deskripsi,
   tanggal,
-  rounded,
+  imgStyle,
   imgsrc,
   btnvariant,
   onError,
@@ -18,20 +18,39 @@ const TableV2Row = ({
     <div className='flex rounded-xl p-5 text-center drop-shadow-custom bg-Gray-25 mb-2.5'>
       <div className='w-[67px] p-[18.5px] flex items-center'>{no}</div>
       <div className='w-[421px] flex'>
-        <div>
-          <Image
-            width={124}
-            height={106}
-            className={`${rounded} object-cover object-center`}
-            src={imgsrc}
-            alt='news'
-            onError={onError}
-            placeholder='blur'
-            blurDataURL={
-              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
-            }
-          />
-        </div>
+        {imgStyle === "circle" ||
+        imgStyle === null ||
+        imgStyle === undefined ? (
+          <div>
+            <Image
+              className='rounded-full object-cover object-center'
+              src={imgsrc}
+              alt='news'
+              width={124}
+              height={124}
+              onError={onError}
+              placeholder='blur'
+              blurDataURL={
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
+              }
+            />
+          </div>
+        ) : null}
+        {imgStyle === "square" ? (
+          <div className='relative w-[124px] h-[106px]'>
+            <Image
+              className='rounded-[20px] object-cover object-center'
+              src={imgsrc}
+              alt='news'
+              fill={true}
+              onError={onError}
+              placeholder='blur'
+              blurDataURL={
+                "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN0sraOBgAClAEVfrGhwQAAAABJRU5ErkJggg=="
+              }
+            />
+          </div>
+        ) : null}
         <div className='justify-center p-[23px]'>
           <div className='line-clamp-1'>
             <p className='text-justify font-medium text-base'>{nama}</p>
