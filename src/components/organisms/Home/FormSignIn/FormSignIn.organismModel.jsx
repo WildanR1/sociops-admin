@@ -19,14 +19,14 @@ const useFormSignInModel = () => {
   }, [router, token.length]);
 
   const schemaSignIn = Yup.object({
-    email: Yup.string()
-      .min(6, "Minimal 2 karakter")
-      .max(25, "Email tidak boleh melebihi 25 karakter")
-      .email("Email tidak valid")
-      .required("Email tidak boleh kosong"),
-    password: Yup.string()
-      .min(8, "Minimal 8 karakter")
-      .required("Password tidak boleh kosong"),
+    // email: Yup.string()
+    //   .min(6, "Minimal 2 karakter")
+    //   .max(25, "Email tidak boleh melebihi 25 karakter")
+    //   .email("Email tidak valid")
+    //   .required("Email tidak boleh kosong"),
+    // password: Yup.string()
+    //   .min(8, "Minimal 8 karakter")
+    //   .required("Password tidak boleh kosong"),
   });
 
   const handleLogin = async (adminData) => {
@@ -50,8 +50,8 @@ const useFormSignInModel = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "wildanr@example.com",
+      password: "12345678",
     },
     validationSchema: schemaSignIn,
     onSubmit: (values) => {
